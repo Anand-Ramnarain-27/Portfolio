@@ -23,6 +23,9 @@ import {
     jobit,
     tripguide,
     threejs,
+    unity,
+    csharp,
+    delphi,
   } from "../assets";
   
   export const navLinks = [
@@ -95,6 +98,18 @@ import {
     {
       name: "git",
       icon: git,
+    },
+    {
+      name: "Delphi",
+      icon: delphi,
+    },
+    {
+      name: "Unity",
+      icon: unity,
+    },
+    {
+      name: "C#",
+      icon: csharp,
     },
   ];
 

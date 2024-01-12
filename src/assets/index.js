@@ -30,6 +30,10 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
+import unity from "./tech/unity.png";
+import csharp from "./tech/csharp.png";
+import delphi from "./tech/delphi.png";
+
 export {
   logo,
   backend,
@@ -59,4 +63,7 @@ export {
   carrent,
   jobit,
   tripguide,
+  unity,
+  csharp,
+  delphi,
 };
