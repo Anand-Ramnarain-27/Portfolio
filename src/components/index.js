@@ -7,12 +7,14 @@ import Experience from './Experience';
 import Works from './Works';
 import Feedbacks from './Feedbacks';
 import Contact from './Contact';
+import University from './University';
 
 export {
   Hero,
   Navbar,
   About,
   Tech,
+  University,
   Experience,
   Works,
   Feedbacks,
