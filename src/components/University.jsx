@@ -82,4 +82,4 @@ import {
     );
   };
 
-  export default SectionWrapper(University, "");
+  export default SectionWrapper(University, "university");
