@@ -24,7 +24,8 @@ import broforce from "./broforce.png";
 import Portweb from "./Portweb.png";
 import snake from "./snake.jpg";
 import Visualweb from "./VisualWeb.png";
-import ShoeBag from "./EasyWebsite.png"
+import ShoeBag from "./EasyWebsite.png";
+import Current from "./current.png";
 
 import unity from "./tech/unity.png";
 import csharp from "./tech/csharp.png";
@@ -55,6 +56,7 @@ export {
   snake,
   Visualweb,
   ShoeBag,
+  Current,
   unity,
   csharp,
   delphi,

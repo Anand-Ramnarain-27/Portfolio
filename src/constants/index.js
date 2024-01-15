@@ -18,6 +18,7 @@ import {
   snake,
   Visualweb,
   ShoeBag,
+  Current,
   threejs,
   unity,
   csharp,
@@ -292,6 +293,27 @@ const projects = [
     ],
     image: snake,
     source_code_link: "https://github.com/Anand-Ramnarain-27/Snake-Game-Files",
+  },
+  {
+    name: "Current Portfolio Website",
+    description:
+      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
+    tags: [
+      {
+        name: "React",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "JavaScript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: Current,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio",
   },
   {
     name: "Easy Shoe & Bag Repair",
