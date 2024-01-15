@@ -10,17 +10,14 @@ import {
   tailwind,
   nodejs,
   git,
-  starbucks,
   wits,
   easyshoe,
   hschool,
-  carrent,
-  jobit,
-  tripguide,
   broforce,
   Portweb,
   snake,
   Visualweb,
+  ShoeBag,
   threejs,
   unity,
   csharp,
@@ -297,25 +294,25 @@ const projects = [
     source_code_link: "https://github.com/Anand-Ramnarain-27/Snake-Game-Files",
   },
   {
-    name: "Zombie Shooter",
+    name: "Easy Shoe & Bag Repair",
     description:
-      "In our endless zombie shooter, players choose weapons, survive waves, and earn ingame currency for upgrades. I focused on player movement, time survived points, and the upgrading system for added strategic depth.",
+      "I collaborated with Easy Shoe and Bag Repair to develop a user-friendly website, leveraging the Godaddy platform. Our joint efforts resulted in a online presence tailored to the client's specifications, showcasing their expertise in shoe and bag repair services.",
     tags: [
       {
-        name: "Unity Engine",
+        name: "GoDaddy",
         color: "blue-text-gradient",
       },
       {
-        name: "C#",
+        name: "Frontend",
         color: "green-text-gradient",
       },
       {
-        name: "JavaScript",
+        name: "Work Experience",
         color: "pink-text-gradient",
       },
     ],
-    image: tripguide,
-    source_code_link: "https://github.com/",
+    image: ShoeBag,
+    source_code_link: "https://easyshoerepair.co.za",
   },
 ];
 

@@ -18,17 +18,13 @@ import threejs from "./tech/threejs.svg";
 
 import wits from "./company/wits.png";
 import easyshoe from "./company/easyshoe.jpg";
-import starbucks from "./company/starbucks.png";
 import hschool from "./company/school.jpg";
-
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
 
 import broforce from "./broforce.png";
 import Portweb from "./Portweb.png";
 import snake from "./snake.jpg";
 import Visualweb from "./VisualWeb.png";
+import ShoeBag from "./EasyWebsite.png"
 
 import unity from "./tech/unity.png";
 import csharp from "./tech/csharp.png";
@@ -51,17 +47,14 @@ export {
   reactjs,
   tailwind,
   threejs,
-  starbucks,
   hschool,
   wits,
   easyshoe,
-  carrent,
-  jobit,
-  tripguide,
   broforce,
   Portweb,
   snake,
   Visualweb,
+  ShoeBag,
   unity,
   csharp,
   delphi,
