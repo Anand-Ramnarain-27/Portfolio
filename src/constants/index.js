@@ -23,6 +23,7 @@ import {
   unity,
   csharp,
   delphi,
+  sql,
 } from "../assets";
 
 export const navLinks = [
@@ -112,6 +113,10 @@ const technologies = [
     name: "C#",
     icon: csharp,
   },
+  {
+    name: "SQL",
+    icon: sql,
+  },
 ];
 
 const university = [
@@ -189,10 +194,10 @@ const experiences = [
     iconBg: "#383E56",
     date: "March 2020 - April 2021",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developing and maintaining a web application using GoDaddy.",
+      "Collaborating with the client and their teams to fit the website to their specifications.",
+      "Product Cataloging.",
+      "Search Engine Optimization.",
     ],
   },
 ];

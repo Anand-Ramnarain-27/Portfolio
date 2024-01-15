@@ -30,6 +30,7 @@ import Current from "./current.png";
 import unity from "./tech/unity.png";
 import csharp from "./tech/csharp.png";
 import delphi from "./tech/delphi.png";
+import sql from "./tech/sql.png"
 
 export {
   logo,
@@ -60,4 +61,5 @@ export {
   unity,
   csharp,
   delphi,
+  sql,
 };
