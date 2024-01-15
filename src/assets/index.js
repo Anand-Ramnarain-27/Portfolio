@@ -16,7 +16,10 @@ import reactjs from "./tech/reactjs.png";
 import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
 
+import wits from "./company/wits.png";
+import easyshoe from "./company/easyshoe.jpg";
 import starbucks from "./company/starbucks.png";
+import hschool from "./company/school.jpg";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -44,6 +47,9 @@ export {
   tailwind,
   threejs,
   starbucks,
+  hschool,
+  wits,
+  easyshoe,
   carrent,
   jobit,
   tripguide,
