@@ -334,7 +334,7 @@ const projects = [
       },
     ],
     image: ShoeBag,
-    source_code_link: "https://easyshoerepair.co.za",
+    source_code_link: "https://easybagrepair.co.za/home",
   },
 ];
 
