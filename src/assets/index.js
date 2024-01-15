@@ -25,6 +25,11 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
+import broforce from "./broforce.png";
+import Portweb from "./Portweb.png";
+import snake from "./snake.jpg";
+import Visualweb from "./VisualWeb.png";
+
 import unity from "./tech/unity.png";
 import csharp from "./tech/csharp.png";
 import delphi from "./tech/delphi.png";
@@ -53,6 +58,10 @@ export {
   carrent,
   jobit,
   tripguide,
+  broforce,
+  Portweb,
+  snake,
+  Visualweb,
   unity,
   csharp,
   delphi,

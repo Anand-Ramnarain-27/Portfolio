@@ -17,6 +17,10 @@ import {
   carrent,
   jobit,
   tripguide,
+  broforce,
+  Portweb,
+  snake,
+  Visualweb,
   threejs,
   unity,
   csharp,
@@ -208,62 +212,105 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Car Rent",
+    name: "API Website",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+      "Embark on a cosmic journey at NASA Data Website, leveraging NASA's API for realtime celestial wonders. Explore data visualizations, play the asteroid game, where to defend earth from asteriods fetched through the API, and witness space station movements transformed into mesmerizing art.",
     tags: [
       {
-        name: "react",
+        name: "API",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "HTML",
         color: "green-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "JavaScript",
         color: "pink-text-gradient",
       },
     ],
-    image: carrent,
-    source_code_link: "https://github.com/",
+    image: Visualweb,
+    source_code_link: "https://github.com/Anand-Ramnarain/Data_Website",
   },
   {
-    name: "Job IT",
+    name: "Broforce Clone",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "Experience the adrenaline of my Broforce-inspired game clone, featuring destructible terrain, dynamic character-switching, and scattered destructive items for an intense gaming experience reminiscent of the original. Relive the iconic first level in a fresh and thrilling way!",
     tags: [
       {
-        name: "react",
+        name: "Unity Engine",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
+        name: "C#",
         color: "green-text-gradient",
       },
       {
-        name: "scss",
+        name: "Clone",
         color: "pink-text-gradient",
       },
     ],
-    image: jobit,
-    source_code_link: "https://github.com/",
+    image: broforce,
+    source_code_link:
+      "https://github.com/Anand-Ramnarain-27/Broforce-Game-Files",
   },
   {
-    name: "Trip Guide",
+    name: "My First Portfolio Website",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "My journey into the world of web development, This was my attempt at crafting a portfolio website using HTML, CSS, and JavaScript. To showcase my skills and creative endeavors, this project symbolizes my commitment to learning and growth in the digital realm of digital.",
     tags: [
       {
-        name: "nextjs",
+        name: "CSS",
         color: "blue-text-gradient",
       },
       {
-        name: "supabase",
+        name: "HTML",
         color: "green-text-gradient",
       },
       {
-        name: "css",
+        name: "JavaScript",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: Portweb,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio-Website",
+  },
+  {
+    name: "Snake Clone",
+    description:
+      "I created a clone of the classic Nokia Snake game, aiming to enhance snake movement and level design. The project challenged me to improve my coding skills and explore creative ways to elevate the traditional gameplay experience.",
+    tags: [
+      {
+        name: "Unity Engine",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "C#",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Clone",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: snake,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/Snake-Game-Files",
+  },
+  {
+    name: "Zombie Shooter",
+    description:
+      "In our endless zombie shooter, players choose weapons, survive waves, and earn ingame currency for upgrades. I focused on player movement, time survived points, and the upgrading system for added strategic depth.",
+    tags: [
+      {
+        name: "Unity Engine",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "C#",
+        color: "green-text-gradient",
+      },
+      {
+        name: "JavaScript",
         color: "pink-text-gradient",
       },
     ],
