@@ -10,6 +10,8 @@ import {
   tailwind,
   nodejs,
   git,
+  cplus,
+  unreal,
   wits,
   easyshoe,
   hschool,
@@ -117,6 +119,14 @@ const technologies = [
     name: "SQL",
     icon: sql,
   },
+  {
+    name: "C++",
+    icon: cplus,
+  },
+  {
+    name: "Unreal Engine",
+    icon: unreal,
+  },
 ];
 
 const university = [
@@ -178,7 +188,7 @@ const university = [
     iconBg: "#383E56",
     date: "January 2024 - ",
     points: [
-      "Digital Arts Research Project",
+      "Digital Arts Research Project: Games And Artificial Intelligence",
       "Digital Art Project IV",
       "Game Design IV",
       "Interactive Media IV",
@@ -257,27 +267,27 @@ const projects = [
     source_code_link:
       "https://github.com/Anand-Ramnarain-27/Broforce-Game-Files",
   },
-  {
-    name: "My First Portfolio Website",
-    description:
-      "My journey into the world of web development, This was my attempt at crafting a portfolio website using HTML, CSS, and JavaScript. To showcase my skills and creative endeavors, this project symbolizes my commitment to learning and growth in the digital realm of digital.",
-    tags: [
-      {
-        name: "CSS",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "HTML",
-        color: "green-text-gradient",
-      },
-      {
-        name: "JavaScript",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: Portweb,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio-Website",
-  },
+  //{
+  //  name: "My First Portfolio Website",
+  //  description:
+  //    "My journey into the world of web development, This was my attempt at crafting a portfolio website using HTML, CSS, and JavaScript. To showcase my skills and creative endeavors, this project symbolizes my commitment to learning and growth in the digital realm of digital.",
+  //  tags: [
+  //    {
+  //      name: "CSS",
+  //      color: "blue-text-gradient",
+  //    },
+  //   {
+  //      name: "HTML",
+  //      color: "green-text-gradient",
+  //    },
+  //    {
+  //      name: "JavaScript",
+  //      color: "pink-text-gradient",
+  //    },
+  // ],
+  //  image: Portweb,
+  //  source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio-Website",
+  //},
   {
     name: "Snake Clone",
     description:
@@ -314,6 +324,90 @@ const projects = [
       },
       {
         name: "Tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: Current,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio",
+  },
+  {
+    name: "Zombie Mayhem",
+    description:
+      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
+    tags: [
+      {
+        name: "C#",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "JavaScript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Unity",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: Current,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio",
+  },
+  {
+    name: "2.5D Platformer",
+    description:
+      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
+    tags: [
+      {
+        name: "Blueprint",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Unreal",
+        color: "green-text-gradient",
+      },
+      {
+        name: "C++",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: Current,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio",
+  },
+  {
+    name: "Space Shooter",
+    description:
+      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
+    tags: [
+      {
+        name: "Blueprint",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Unreal",
+        color: "green-text-gradient",
+      },
+      {
+        name: "C++",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: Current,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio",
+  },
+  {
+    name: "My Animation",
+    description:
+      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
+    tags: [
+      {
+        name: "Blender",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Asset Creation",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Animation",
         color: "pink-text-gradient",
       },
     ],

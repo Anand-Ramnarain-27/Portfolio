@@ -15,6 +15,8 @@ import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
 import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
+import cplus from "./tech/cplus.png";
+import unreal from "./tech/unreal.png";
 
 import wits from "./company/wits.png";
 import easyshoe from "./company/easyshoe.jpg";
@@ -49,6 +51,8 @@ export {
   reactjs,
   tailwind,
   threejs,
+  cplus,
+  unreal,
   hschool,
   wits,
   easyshoe,
