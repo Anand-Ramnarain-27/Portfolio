@@ -349,7 +349,7 @@ const projects = [
       },
     ],
     image: Current,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio",
+    source_code_link: "https://github.com/Anand-Ramnarain-27/Zombie_Survivor",
   },
   {
     name: "2.5D Platformer",
@@ -370,7 +370,7 @@ const projects = [
       },
     ],
     image: Current,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio",
+    source_code_link: "https://github.com/Anand-Ramnarain-27/2.5D_Platformer",
   },
   {
     name: "Space Shooter",
