@@ -17,6 +17,9 @@ import {
   hschool,
   broforce,
   Portweb,
+  animation,
+  Zombie,
+  Platformer,
   snake,
   Visualweb,
   ShoeBag,
@@ -348,7 +351,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: Current,
+    image: Zombie,
     source_code_link: "https://github.com/Anand-Ramnarain-27/Zombie_Survivor",
   },
   {
@@ -369,29 +372,8 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: Current,
+    image: Platformer,
     source_code_link: "https://github.com/Anand-Ramnarain-27/2.5D_Platformer",
-  },
-  {
-    name: "Space Shooter",
-    description:
-      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
-    tags: [
-      {
-        name: "Blueprint",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Unreal",
-        color: "green-text-gradient",
-      },
-      {
-        name: "C++",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: Current,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio",
   },
   {
     name: "My Animation",
@@ -411,7 +393,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: Current,
+    image: animation,
     source_code_link: "https://github.com/Anand-Ramnarain-27/My_Animation",
   },
   {

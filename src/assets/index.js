@@ -28,6 +28,9 @@ import snake from "./snake.jpg";
 import Visualweb from "./VisualWeb.png";
 import ShoeBag from "./EasyWebsite.png";
 import Current from "./current.png";
+import animation from "./animation.png";
+import Zombie from "./Zombie.png";
+import Platformer from "./Platformer.png";
 
 import unity from "./tech/unity.png";
 import csharp from "./tech/csharp.png";
@@ -57,6 +60,9 @@ export {
   wits,
   easyshoe,
   broforce,
+  animation,
+  Zombie,
+  Platformer,
   Portweb,
   snake,
   Visualweb,
