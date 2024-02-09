@@ -412,7 +412,7 @@ const projects = [
       },
     ],
     image: Current,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio",
+    source_code_link: "https://github.com/Anand-Ramnarain-27/My_Animation",
   },
   {
     name: "Easy Shoe & Bag Repair",
