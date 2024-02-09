@@ -126,10 +126,6 @@ const technologies = [
     name: "C++",
     icon: cplus,
   },
-  {
-    name: "Unreal Engine",
-    icon: unreal,
-  },
 ];
 
 const university = [
