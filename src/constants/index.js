@@ -424,7 +424,7 @@ const projects = [
         color: "blue-text-gradient",
       },
       {
-        name: "Frontend",
+        name: "Game",
         color: "green-text-gradient",
       },
       {
