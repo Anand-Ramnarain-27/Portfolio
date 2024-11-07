@@ -29,6 +29,7 @@ import {
   csharp,
   delphi,
   sql,
+  hacker,
 } from "../assets";
 
 export const navLinks = [
@@ -412,6 +413,27 @@ const projects = [
     ],
     image: ShoeBag,
     source_code_link: "https://easybagrepair.co.za/home",
+  },
+  {
+    name: "Hacker Vs Cyberspace",
+    description:
+      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
+    tags: [
+      {
+        name: "JavaScript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Frontend",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Asset Creation",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: hacker,
+    source_code_link: "https://anand-ramnarain-27.github.io/Hacker_Vs_CyberSpace/",
   },
 ];
 

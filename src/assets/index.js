@@ -31,6 +31,7 @@ import Current from "./current.png";
 import animation from "./animation.png";
 import Zombie from "./Zombie.png";
 import Platformer from "./Platformer.png";
+import hacker from "./hack.png"
 
 import unity from "./tech/unity.png";
 import csharp from "./tech/csharp.png";
@@ -39,6 +40,7 @@ import sql from "./tech/sql.png"
 
 export {
   logo,
+  hacker,
   backend,
   creator,
   mobile,
