@@ -420,7 +420,7 @@ const projects = [
       "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
     tags: [
       {
-        name: "JavaScript",
+        name: "Pure JavaScript",
         color: "blue-text-gradient",
       },
       {
