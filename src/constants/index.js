@@ -433,7 +433,7 @@ const projects = [
       },
     ],
     image: hacker,
-    source_code_link: "https://anand-ramnarain-27.github.io/Hacker_Vs_CyberSpace/",
+    source_code_link: "https://github.com/Anand-Ramnarain-27/digital_arts_project",
   },
 ];
 
