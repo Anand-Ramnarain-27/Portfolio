@@ -372,27 +372,27 @@ const projects = [
     image: Platformer,
     source_code_link: "https://github.com/Anand-Ramnarain-27/2.5D_Platformer",
   },
-  {
-    name: "My Animation",
-    description:
-      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
-    tags: [
-      {
-        name: "Blender",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Asset Creation",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Animation",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: animation,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/My_Animation",
-  },
+  // {
+  //   name: "My Animation",
+  //   description:
+  //     "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
+  //   tags: [
+  //     {
+  //       name: "Blender",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "Asset Creation",
+  //       color: "green-text-gradient",
+  //     },
+  //     {
+  //       name: "Animation",
+  //       color: "pink-text-gradient",
+  //     },
+  //   ],
+  //   image: animation,
+  //   source_code_link: "https://github.com/Anand-Ramnarain-27/My_Animation",
+  // },
   {
     name: "Easy Shoe & Bag Repair",
     description:
