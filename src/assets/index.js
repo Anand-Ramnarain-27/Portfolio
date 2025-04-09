@@ -21,6 +21,7 @@ import unreal from "./tech/unreal.png";
 import wits from "./company/wits.png";
 import easyshoe from "./company/easyshoe.jpg";
 import hschool from "./company/school.jpg";
+import bbd from "./company/bbd.jpg";
 
 import broforce from "./broforce.png";
 import Portweb from "./Portweb.png";
@@ -32,6 +33,7 @@ import animation from "./animation.png";
 import Zombie from "./Zombie.png";
 import Platformer from "./Platformer.png";
 import hacker from "./hack.png"
+import Tower from "./Tower.png";
 
 import unity from "./tech/unity.png";
 import csharp from "./tech/csharp.png";
@@ -40,6 +42,8 @@ import sql from "./tech/sql.png"
 
 export {
   logo,
+  Tower,
+  bbd,
   hacker,
   backend,
   creator,

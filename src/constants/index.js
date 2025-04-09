@@ -30,6 +30,8 @@ import {
   delphi,
   sql,
   hacker,
+  Tower,
+  bbd
 } from "../assets";
 
 export const navLinks = [
@@ -186,7 +188,7 @@ const university = [
     company_name: "University Of Witwatersrand",
     icon: wits,
     iconBg: "#383E56",
-    date: "January 2024 - ",
+    date: "January 2024 - December 2024",
     points: [
       "Digital Arts Research Project: Games And Artificial Intelligence",
       "Digital Art Project IV",
@@ -197,6 +199,19 @@ const university = [
 ];
 
 const experiences = [
+  {
+    title: "Vaction Work",
+    company_name: "BBD Software",
+    icon: bbd,
+    iconBg: "#383E56",
+    date: "November 2024 - December 2024",
+    points: [
+      "Designed and developed a web application from scratch using modern technologies and best practices.",
+      "Utilized tools and frameworks including Flyway for database migrations, Prisma as an ORM, Docker for containerization, and Azure for local development and testing.",
+      "Developed the frontend using TypeScript and React and implemented the backend with PostgreSQL for data storage.",
+      "Collaborated effectively in a team to create a robust and scalable solution.",
+    ],
+  },
   {
     title: "Frontend Developer",
     company_name: "Easy Shoe & Bag Repair",
@@ -224,27 +239,27 @@ const testimonials = [
 ];
 
 const projects = [
-  {
-    name: "API Website",
-    description:
-      "Embark on a cosmic journey at NASA Data Website, leveraging NASA's API for realtime celestial wonders. Explore data visualizations, play the asteroid game, where to defend earth from asteriods fetched through the API, and witness space station movements transformed into mesmerizing art.",
-    tags: [
-      {
-        name: "API",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "HTML",
-        color: "green-text-gradient",
-      },
-      {
-        name: "JavaScript",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: Visualweb,
-    source_code_link: "https://github.com/Anand-Ramnarain/Data_Website",
-  },
+  // {
+  //   name: "API Website",
+  //   description:
+  //     "Embark on a cosmic journey at NASA Data Website, leveraging NASA's API for realtime celestial wonders. Explore data visualizations, play the asteroid game, where to defend earth from asteriods fetched through the API, and witness space station movements transformed into mesmerizing art.",
+  //   tags: [
+  //     {
+  //       name: "API",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "HTML",
+  //       color: "green-text-gradient",
+  //     },
+  //     {
+  //       name: "JavaScript",
+  //       color: "pink-text-gradient",
+  //     },
+  //   ],
+  //   image: Visualweb,
+  //   source_code_link: "https://github.com/Anand-Ramnarain/Data_Website",
+  // },
   {
     name: "Broforce Clone",
     description:
@@ -372,47 +387,47 @@ const projects = [
     image: Platformer,
     source_code_link: "https://github.com/Anand-Ramnarain-27/2.5D_Platformer",
   },
-  // {
-  //   name: "My Animation",
-  //   description:
-  //     "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
-  //   tags: [
-  //     {
-  //       name: "Blender",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "Asset Creation",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "Animation",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image: animation,
-  //   source_code_link: "https://github.com/Anand-Ramnarain-27/My_Animation",
-  // },
   {
-    name: "Easy Shoe & Bag Repair",
+    name: "My Animation",
     description:
-      "I collaborated with Easy Shoe and Bag Repair to develop a user-friendly website, leveraging the Godaddy platform. Our joint efforts resulted in a online presence tailored to the client's specifications, showcasing their expertise in shoe and bag repair services.",
+      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
     tags: [
       {
-        name: "GoDaddy",
+        name: "Blender",
         color: "blue-text-gradient",
       },
       {
-        name: "Frontend",
+        name: "Asset Creation",
         color: "green-text-gradient",
       },
       {
-        name: "Work Experience",
+        name: "Animation",
         color: "pink-text-gradient",
       },
     ],
-    image: ShoeBag,
-    source_code_link: "https://easybagrepair.co.za/home",
+    image: animation,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/My_Animation",
+  },
+  {
+    name: "Tower Defense",
+    description:
+    "I developed a game using C#, integrating AI through procedural generation and behavior trees. This project highlights dynamic enemy patterns and evolving challenges, showcasing my ability to build engaging gameplay with intelligent system design.",
+    tags: [
+      {
+        name: "C#",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Unity",
+        color: "green-text-gradient",
+      },
+      {
+        name: "AI",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: Tower,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/TowerDefense_Game",
   },
   {
     name: "Hacker Vs Cyberspace",

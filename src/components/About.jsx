@@ -48,12 +48,12 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        I am an open-minded, focused digital arts student with exceptional
+        I am an open-minded, focused fresh game dev graduate with exceptional
         communication skills and the ability to learn very quickly. I am always
         willing to learn and execute all given tasks efficiently within a given
         timeframe. My world class education has provided with an excellent
         foundation to apply myself and produce exceptional results, which helped
-        me earn a space in first year BA in Digital Arts at the University of
+        me earn a space in first year in Digital Arts at the University of
         Witwatersrand. My degree program has, thus far, equipped me with the
         skills and mindset of a creative and logical thinker. I am a
         level-headed, creative individual, who's main career goal is to excel in
