@@ -34,6 +34,9 @@ import Zombie from "./Zombie.png";
 import Platformer from "./Platformer.png";
 import hacker from "./hack.png"
 import Tower from "./Tower.png";
+import todo from "./todo.png";
+import tetris from "./tetris.png";
+import team from "./team.png";
 
 import unity from "./tech/unity.png";
 import csharp from "./tech/csharp.png";
@@ -43,6 +46,9 @@ import sql from "./tech/sql.png"
 export {
   logo,
   Tower,
+  team,
+  todo,
+  tetris,
   bbd,
   hacker,
   backend,

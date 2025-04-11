@@ -16,13 +16,11 @@ import {
   easyshoe,
   hschool,
   broforce,
-  Portweb,
   animation,
   Zombie,
   Platformer,
   snake,
-  Visualweb,
-  ShoeBag,
+  team,
   Current,
   threejs,
   unity,
@@ -31,7 +29,9 @@ import {
   sql,
   hacker,
   Tower,
-  bbd
+  bbd,
+  todo,
+  tetris
 } from "../assets";
 
 export const navLinks = [
@@ -239,27 +239,27 @@ const testimonials = [
 ];
 
 const projects = [
-  // {
-  //   name: "API Website",
-  //   description:
-  //     "Embark on a cosmic journey at NASA Data Website, leveraging NASA's API for realtime celestial wonders. Explore data visualizations, play the asteroid game, where to defend earth from asteriods fetched through the API, and witness space station movements transformed into mesmerizing art.",
-  //   tags: [
-  //     {
-  //       name: "API",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "HTML",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "JavaScript",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image: Visualweb,
-  //   source_code_link: "https://github.com/Anand-Ramnarain/Data_Website",
-  // },
+  {
+    name: "To Do List",
+    description:
+      "This was the start of my journey in C++ as an organized adventure with the C++ To-Do List App, where tasks come to life in a sleek command-line world. Add missions with priority and category, view them in style, save your journey to a file, and reload it later to continue your quest toward productivity.",
+    tags: [
+      {
+        name: "C++",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Project",
+        color: "green-text-gradient",
+      },
+      {
+        name: "First",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: todo,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/Todo_List",
+  },
   {
     name: "Broforce Clone",
     description:
@@ -282,27 +282,27 @@ const projects = [
     source_code_link:
       "https://github.com/Anand-Ramnarain-27/Broforce-Game-Files",
   },
-  //{
-  //  name: "My First Portfolio Website",
-  //  description:
-  //    "My journey into the world of web development, This was my attempt at crafting a portfolio website using HTML, CSS, and JavaScript. To showcase my skills and creative endeavors, this project symbolizes my commitment to learning and growth in the digital realm of digital.",
-  //  tags: [
-  //    {
-  //      name: "CSS",
-  //      color: "blue-text-gradient",
-  //    },
-  //   {
-  //      name: "HTML",
-  //      color: "green-text-gradient",
-  //    },
-  //    {
-  //      name: "JavaScript",
-  //      color: "pink-text-gradient",
-  //    },
-  // ],
-  //  image: Portweb,
-  //  source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio-Website",
-  //},
+  {
+   name: "Tetris",
+   description:
+     "My journey into the world of game dev with C++ started with this retro-charged Tetris Game, where falling blocks test your reflexes and strategy. Rotate, stack, and clear lines in a race against gravity, as pixelated shapes dance to your command in a hypnotic loop of logic, rhythm, and arcade nostalgia.",
+   tags: [
+     {
+       name: "C++",
+       color: "blue-text-gradient",
+     },
+    {
+       name: "Learning",
+       color: "green-text-gradient",
+     },
+     {
+       name: "build",
+       color: "pink-text-gradient",
+     },
+  ],
+   image: tetris,
+   source_code_link: "https://github.com/Anand-Ramnarain-27/Tetris",
+  },
   {
     name: "Snake Clone",
     description:
@@ -449,6 +449,27 @@ const projects = [
     ],
     image: hacker,
     source_code_link: "https://github.com/Anand-Ramnarain-27/digital_arts_project",
+  },
+  {
+    name: "Team Formation Project",
+    description:
+      "This project is an NX monorepo and a stack of Docker, Prisma, Webpack, and Azure Functions. Shape teams through idea votes, dynamic grouping, and real-time peer reviews — all under an admin-student role system and brought to life with my first APIs.",
+    tags: [
+      {
+        name: "Azure Functions",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Prisma",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Typescript",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: team,
+    source_code_link: "https://github.com/Anand-Ramnarain-27/team-formation-project",
   },
 ];
 
