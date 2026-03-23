@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
         <div className='flex flex-col justify-center items-center mt-5'>
           <div className='w-5 h-5 rounded-full bg-blue-500' />
@@ -19,8 +19,8 @@ const Hero = () => {
             Hi, I'm <span className='text-[#4066E0]'>Anand</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I develop games, user <br className='sm:block hidden' />
-            interfaces and web applications
+            I build games, engines, <br className='sm:block hidden' />
+            and interactive experiences
           </p>
         </div>
       </div>
@@ -48,4 +48,4 @@ const Hero = () => {
   );
 };
 
-export default Hero
+export default Hero;

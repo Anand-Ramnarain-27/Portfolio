@@ -1,5 +1,4 @@
 import React from "react";
-//import Tilt from "react-tilt";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 
@@ -14,20 +13,8 @@ const ServiceCard = ({ index, title, icon }) => (
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
     >
-      <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
-      >
-        <img
-          src={icon}
-          alt="web-development"
-          className="w-16 h-16 object-contain"
-        />
-
+      <div className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
+        <img src={icon} alt={title} className="w-16 h-16 object-contain" />
         <h3 className="text-white text-[20px] font-bold text-center">
           {title}
         </h3>
@@ -48,16 +35,17 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        I am an open-minded, focused fresh game dev graduate with exceptional
-        communication skills and the ability to learn very quickly. I am always
-        willing to learn and execute all given tasks efficiently within a given
-        timeframe. My world class education has provided with an excellent
-        foundation to apply myself and produce exceptional results, which helped
-        me earn a space in first year in Digital Arts at the University of
-        Witwatersrand. My degree program has, thus far, equipped me with the
-        skills and mindset of a creative and logical thinker. I am a
-        level-headed, creative individual, who's main career goal is to excel in
-        my field. Let's work together to bring your ideas to life!
+        I am a Digital Arts graduate from the University of the Witwatersrand,
+        specialising in Game Design, Interactive Media, and web-based
+        technologies. I combine a strong foundation in software development,
+        game programming, and full-stack web development with a solid grounding
+        in user-centred design. I am currently pursuing a Master's in Advanced
+        Programming for AAA Games at UPC Barcelona, deepening my expertise in
+        C++, game engine architecture, AI systems, and graphics programming. My
+        work spans game development, interactive systems, and modern web
+        applications, and I thrive in collaborative environments that challenge
+        me to bridge creativity and engineering to produce polished, impactful
+        experiences.
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">

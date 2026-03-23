@@ -30,18 +30,11 @@ import upc from "./company/upc.png";
 
 import engine from "./myEngine.png";
 import broforce from "./broforce.png";
-import Portweb from "./Portweb.png";
-import snake from "./snake.jpg";
-import Visualweb from "./VisualWeb.png";
-import ShoeBag from "./EasyWebsite.png";
-import Current from "./current.png";
 import animation from "./animation.png";
 import Zombie from "./Zombie.png";
 import Platformer from "./Platformer.png";
 import hacker from "./hack.png";
 import Tower from "./Tower.png";
-import todo from "./todo.png";
-import tetris from "./tetris.png";
 import team from "./team.png";
 
 export {
@@ -50,8 +43,6 @@ export {
   engine,
   Tower,
   team,
-  todo,
-  tetris,
   bbd,
   hacker,
   backend,
@@ -82,9 +73,4 @@ export {
   animation,
   Zombie,
   Platformer,
-  Portweb,
-  snake,
-  Visualweb,
-  ShoeBag,
-  Current,
 };
