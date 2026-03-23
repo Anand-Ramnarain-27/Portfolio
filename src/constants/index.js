@@ -19,9 +19,7 @@ import {
   animation,
   Zombie,
   Platformer,
-  snake,
   team,
-  Current,
   threejs,
   unity,
   csharp,
@@ -30,186 +28,101 @@ import {
   hacker,
   Tower,
   bbd,
-  todo,
-  tetris
+  upc,
+  engine
 } from "../assets";
 
+// ---------------- NAV ----------------
 export const navLinks = [
-  {
-    id: "about",
-    title: "About",
-  },
-  {
-    id: "work",
-    title: "Experience",
-  },
-  {
-    id: "university",
-    title: "Education",
-  },
-  {
-    id: "projects",
-    title: "Projects",
-  },
-  {
-    id: "contact",
-    title: "Contact",
-  },
+  { id: "about", title: "About" },
+  { id: "work", title: "Experience" },
+  { id: "university", title: "Education" },
+  { id: "projects", title: "Projects" },
+  { id: "contact", title: "Contact" },
 ];
 
+// ---------------- SERVICES ----------------
 const services = [
-  {
-    title: "Web Developer",
-    icon: web,
-  },
-  {
-    title: "Game Designer",
-    icon: mobile,
-  },
-  {
-    title: "Game Developer",
-    icon: backend,
-  },
-  {
-    title: "Programmer",
-    icon: creator,
-  },
+  { title: "Gameplay Programmer", icon: web },
+  { title: "Game Engine Developer", icon: mobile },
+  { title: "Full-Stack Developer", icon: backend },
+  { title: "Interactive Systems Designer", icon: creator },
 ];
 
+// ---------------- TECHNOLOGIES ----------------
 const technologies = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "Delphi",
-    icon: delphi,
-  },
-  {
-    name: "Unity",
-    icon: unity,
-  },
-  {
-    name: "C#",
-    icon: csharp,
-  },
-  {
-    name: "SQL",
-    icon: sql,
-  },
-  {
-    name: "C++",
-    icon: cplus,
-  },
+  { name: "C++", icon: cplus },
+  { name: "C#", icon: csharp },
+  { name: "Unity", icon: unity },
+  { name: "Unreal Engine", icon: unreal },
+  { name: "DirectX 12", icon: cplus },
+  { name: "Three JS", icon: threejs },
+  { name: "React JS", icon: reactjs },
+  { name: "JavaScript", icon: javascript },
+  { name: "Node JS", icon: nodejs },
+  { name: "SQL", icon: sql },
+  { name: "Git", icon: git },
+  { name: "Tailwind CSS", icon: tailwind },
+  { name: "HTML 5", icon: html },
+  { name: "CSS 3", icon: css },
+  { name: "Delphi", icon: delphi },
 ];
 
+// ---------------- EDUCATION ----------------
 const university = [
   {
-    title: "High School",
+    title: "Master’s in Advanced Programming for AAA Games",
+    company_name: "Universitat Politècnica de Catalunya (UPC)",
+    icon: upc,
+    iconBg: "#383E56",
+    date: "October 2025 - Present",
+    points: [
+      "Specialising in advanced C++ for real-time systems, memory management, and performance optimisation.",
+      "Developed a custom 3D game engine using DirectX 12, including rendering pipeline, PBR shading, and resource management.",
+      "Worked on graphics programming topics such as shaders, lighting models, and image-based lighting (IBL).",
+      "Implemented gameplay and AI systems including behaviour trees and real-time decision making.",
+      "Collaborating in Agile/Scrum teams to deliver complete game projects using industry workflows.",
+    ],
+  },
+  {
+    title: "BA Digital Arts (Honours)",
+    company_name: "University of the Witwatersrand",
+    icon: wits,
+    iconBg: "#383E56",
+    date: "January 2021 - December 2024",
+    points: [
+      "Specialised in Game Design and Interactive Media.",
+      "Developed games using Unity and C#, focusing on gameplay systems, mechanics, and player experience.",
+      "Built interactive web applications using JavaScript, React, and modern frontend technologies.",
+      "Explored AI in games, procedural generation, and player modelling.",
+      "Completed a final research project on Games and Artificial Intelligence.",
+    ],
+  },
+  {
+    title: "National Senior Certificate",
     company_name: "Saint Martin's High School",
     icon: hschool,
     iconBg: "#383E56",
     date: "January 2016 - December 2020",
     points: [
-      "From January 2016 to December 2020, I attended Saint Martin's High School where I obtained my National Senior Certificate.",
-    ],
-  },
-  {
-    title: "First Year",
-    company_name: "University Of Witwatersrand",
-    icon: wits,
-    iconBg: "#383E56",
-    date: "January 2021 - December 2021",
-    points: [
-      "Game Design IA and IB",
-      "Digital Arts Practice IA and IB",
-      "Film, Visual and Performing Arts IA and IB",
-      "Elementary Isizulu Language and Culture IA and IB",
-      "Auxiliary Mathematics I",
-    ],
-  },
-  {
-    title: "Second Year",
-    company_name: "University Of Witwatersrand",
-    icon: wits,
-    iconBg: "#383E56",
-    date: "January 2022 - December 2022",
-    points: [
-      "Game Design IIA and IIB",
-      "Digital Art Design Project",
-      "Digital Art Theory II",
-      "Digital Arts Practice II",
-      "Film Visual and Performing Arts IIA",
-    ],
-  },
-  {
-    title: "Third Year",
-    company_name: "University Of Witwatersrand",
-    icon: wits,
-    iconBg: "#383E56",
-    date: "January 2023 - December 2023",
-    points: [
-      "Game Design IIIA and IIIB",
-      "Digital Art Practice Theory IIIA and IIIB",
-      "Film Visual and Performing Arts IIIA and IIIB",
-      "Interactive Media IIIA and IIIB",
-    ],
-  },
-  {
-    title: "Fourth Year",
-    company_name: "University Of Witwatersrand",
-    icon: wits,
-    iconBg: "#383E56",
-    date: "January 2024 - December 2024",
-    points: [
-      "Digital Arts Research Project: Games And Artificial Intelligence",
-      "Digital Art Project IV",
-      "Game Design IV",
-      "Interactive Media IV",
+      "Completed secondary education with a focus on analytical thinking and problem-solving.",
     ],
   },
 ];
 
+// ---------------- EXPERIENCE ----------------
 const experiences = [
   {
-    title: "Vaction Work",
+    title: "Software Development Vacation Work",
     company_name: "BBD Software",
     icon: bbd,
     iconBg: "#383E56",
     date: "November 2024 - December 2024",
     points: [
-      "Designed and developed a web application from scratch using modern technologies and best practices.",
-      "Utilized tools and frameworks including Flyway for database migrations, Prisma as an ORM, Docker for containerization, and Azure for local development and testing.",
-      "Developed the frontend using TypeScript and React and implemented the backend with PostgreSQL for data storage.",
-      "Collaborated effectively in a team to create a robust and scalable solution.",
+      "Built a full-stack web application using React, TypeScript, PostgreSQL, and Prisma ORM.",
+      "Implemented database migrations using Flyway and containerised services using Docker.",
+      "Worked within a structured development environment using modern engineering practices.",
+      "Collaborated in a team to design and deliver a scalable application.",
     ],
   },
   {
@@ -219,257 +132,124 @@ const experiences = [
     iconBg: "#383E56",
     date: "March 2020 - April 2021",
     points: [
-      "Developing and maintaining a web application using GoDaddy.",
-      "Collaborating with the client and their teams to fit the website to their specifications.",
-      "Product Cataloging.",
-      "Search Engine Optimization.",
+      "Developed and maintained a business website using GoDaddy.",
+      "Worked directly with clients to meet functional and design requirements.",
+      "Managed product catalogues and improved search engine visibility (SEO).",
     ],
   },
 ];
 
-const testimonials = [
-  {
-    testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
-  },
-];
-
+// ---------------- PROJECTS ----------------
 const projects = [
   {
-    name: "To Do List",
+    name: "Custom 3D Game Engine (DirectX 12)",
     description:
-      "This was the start of my journey in C++ as an organized adventure with the C++ To-Do List App, where tasks come to life in a sleek command-line world. Add missions with priority and category, view them in style, save your journey to a file, and reload it later to continue your quest toward productivity.",
+      "A custom 3D game engine built in C++ using DirectX 12, featuring a real-time rendering pipeline, PBR shading, and image-based lighting (IBL). Focused on performance, memory management, and modern graphics programming techniques.",
     tags: [
-      {
-        name: "C++",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Project",
-        color: "green-text-gradient",
-      },
-      {
-        name: "First",
-        color: "pink-text-gradient",
-      },
+      { name: "C++", color: "blue-text-gradient" },
+      { name: "DirectX12", color: "green-text-gradient" },
+      { name: "Graphics", color: "pink-text-gradient" },
     ],
-    image: todo,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/Todo_List",
+    image: engine,
+    source_code_link:
+      "https://github.com/Anand-Ramnarain-27/Anand-PhoenixEngine",
   },
+
+  {
+    name: "Tower Defense",
+    description:
+      "A Unity-based tower defense game built in C#, featuring AI-driven enemies using behaviour trees and procedural wave generation. Designed scalable gameplay systems and dynamic difficulty to create engaging and replayable combat scenarios.",
+    tags: [
+      { name: "C#", color: "blue-text-gradient" },
+      { name: "Unity", color: "green-text-gradient" },
+      { name: "AI", color: "pink-text-gradient" },
+    ],
+    image: Tower,
+    source_code_link:
+      "https://github.com/Anand-Ramnarain-27/TowerDefense_Game",
+  },
+
   {
     name: "Broforce Clone",
     description:
-      "Experience the adrenaline of my Broforce-inspired game clone, featuring destructible terrain, dynamic character-switching, and scattered destructive items for an intense gaming experience reminiscent of the original. Relive the iconic first level in a fresh and thrilling way!",
+      "An action platformer built in Unity using C#, featuring destructible environments, character switching, and combat systems inspired by Broforce. Focused on gameplay responsiveness, physics interactions, and player feedback systems.",
     tags: [
-      {
-        name: "Unity Engine",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "C#",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Clone",
-        color: "pink-text-gradient",
-      },
+      { name: "Unity", color: "blue-text-gradient" },
+      { name: "C#", color: "green-text-gradient" },
+      { name: "Gameplay", color: "pink-text-gradient" },
     ],
     image: broforce,
     source_code_link:
       "https://github.com/Anand-Ramnarain-27/Broforce-Game-Files",
   },
-  {
-   name: "Tetris",
-   description:
-     "My journey into the world of game dev with C++ started with this retro-charged Tetris Game, where falling blocks test your reflexes and strategy. Rotate, stack, and clear lines in a race against gravity, as pixelated shapes dance to your command in a hypnotic loop of logic, rhythm, and arcade nostalgia.",
-   tags: [
-     {
-       name: "C++",
-       color: "blue-text-gradient",
-     },
-    {
-       name: "Learning",
-       color: "green-text-gradient",
-     },
-     {
-       name: "build",
-       color: "pink-text-gradient",
-     },
-  ],
-   image: tetris,
-   source_code_link: "https://github.com/Anand-Ramnarain-27/Tetris",
-  },
-  {
-    name: "Snake Clone",
-    description:
-      "I created a clone of the classic Nokia Snake game, aiming to enhance snake movement and level design. The project challenged me to improve my coding skills and explore creative ways to elevate the traditional gameplay experience.",
-    tags: [
-      {
-        name: "Unity Engine",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "C#",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Clone",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: snake,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/Snake-Game-Files",
-  },
-  {
-    name: "Current Portfolio Website",
-    description:
-      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
-    tags: [
-      {
-        name: "React",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "JavaScript",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Tailwind",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: Current,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/Portfolio",
-  },
+
   {
     name: "Zombie Mayhem",
     description:
-      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
+      "A top-down survival shooter developed in Unity using C#, featuring enemy AI with state machines, wave spawning systems, and player progression mechanics. Focused on combat feel, responsiveness, and overall gameplay performance.",
     tags: [
-      {
-        name: "C#",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "JavaScript",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Unity",
-        color: "pink-text-gradient",
-      },
+      { name: "C#", color: "blue-text-gradient" },
+      { name: "Unity", color: "green-text-gradient" },
+      { name: "AI Systems", color: "pink-text-gradient" },
     ],
     image: Zombie,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/Zombie_Survivor",
+    source_code_link:
+      "https://github.com/Anand-Ramnarain-27/Zombie_Survivor",
   },
+
+  {
+    name: "Team Formation Platform",
+    description:
+      "A full-stack application built using an NX monorepo with TypeScript, Prisma, and Azure Functions. Includes features like idea voting, dynamic team allocation, and role-based access control within a scalable system architecture.",
+    tags: [
+      { name: "TypeScript", color: "blue-text-gradient" },
+      { name: "Azure", color: "green-text-gradient" },
+      { name: "Full-Stack", color: "pink-text-gradient" },
+    ],
+    image: team,
+    source_code_link:
+      "https://github.com/Anand-Ramnarain-27/team-formation-project",
+  },
+
   {
     name: "2.5D Platformer",
     description:
-      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
+      "A 2.5D platformer developed in Unreal Engine using Blueprints and C++, focusing on player movement, collision systems, and level scripting. Explores hybrid Blueprint and C++ workflows for responsive gameplay design.",
     tags: [
-      {
-        name: "Blueprint",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Unreal",
-        color: "green-text-gradient",
-      },
-      {
-        name: "C++",
-        color: "pink-text-gradient",
-      },
+      { name: "Unreal", color: "blue-text-gradient" },
+      { name: "C++", color: "green-text-gradient" },
+      { name: "Gameplay", color: "pink-text-gradient" },
     ],
     image: Platformer,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/2.5D_Platformer",
+    source_code_link:
+      "https://github.com/Anand-Ramnarain-27/2.5D_Platformer",
   },
+
   {
-    name: "My Animation",
+    name: "Hacker vs Cyberspace",
     description:
-      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
+      "A browser-based JavaScript game built without external engines, focusing on core game loop implementation, DOM rendering, and interactive systems. Strengthened understanding of fundamental game programming concepts and logic.",
     tags: [
-      {
-        name: "Blender",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Asset Creation",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Animation",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: animation,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/My_Animation",
-  },
-  {
-    name: "Tower Defense",
-    description:
-    "I developed a game using C#, integrating AI through procedural generation and behavior trees. This project highlights dynamic enemy patterns and evolving challenges, showcasing my ability to build engaging gameplay with intelligent system design.",
-    tags: [
-      {
-        name: "C#",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Unity",
-        color: "green-text-gradient",
-      },
-      {
-        name: "AI",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: Tower,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/TowerDefense_Game",
-  },
-  {
-    name: "Hacker Vs Cyberspace",
-    description:
-      "Explore my journey and accomplishments through my current portfolio website, a testament to my progress and expertise in utilizing React, HTML, JavaScript, CSS and Tailwind to create an immersive digital experience.",
-    tags: [
-      {
-        name: "Pure JavaScript",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Game",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Asset Creation",
-        color: "pink-text-gradient",
-      },
+      { name: "JavaScript", color: "blue-text-gradient" },
+      { name: "Game Dev", color: "green-text-gradient" },
     ],
     image: hacker,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/digital_arts_project",
+    source_code_link:
+      "https://github.com/Anand-Ramnarain-27/digital_arts_project",
   },
+
   {
-    name: "Team Formation Project",
+    name: "3D Animation Project",
     description:
-      "This project is an NX monorepo and a stack of Docker, Prisma, Webpack, and Azure Functions. Shape teams through idea votes, dynamic grouping, and real-time peer reviews — all under an admin-student role system and brought to life with my first APIs.",
+      "A 3D animation created in Blender, focusing on character movement, timing, and visual storytelling. Includes asset creation, rigging, and animation sequencing to demonstrate understanding of animation pipelines and workflows.",
     tags: [
-      {
-        name: "Azure Functions",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Prisma",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Typescript",
-        color: "pink-text-gradient",
-      },
+      { name: "Blender", color: "blue-text-gradient" },
+      { name: "Animation", color: "green-text-gradient" },
+      { name: "3D", color: "pink-text-gradient" },
     ],
-    image: team,
-    source_code_link: "https://github.com/Anand-Ramnarain-27/team-formation-project",
+    image: animation,
+    source_code_link:
+      "https://github.com/Anand-Ramnarain-27/My_Animation",
   },
 ];
 
@@ -477,7 +257,6 @@ export {
   services,
   technologies,
   experiences,
-  testimonials,
   projects,
   university,
 };

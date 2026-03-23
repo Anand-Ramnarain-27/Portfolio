@@ -17,12 +17,18 @@ import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
 import cplus from "./tech/cplus.png";
 import unreal from "./tech/unreal.png";
+import unity from "./tech/unity.png";
+import csharp from "./tech/csharp.png";
+import delphi from "./tech/delphi.png";
+import sql from "./tech/sql.png";
 
 import wits from "./company/wits.png";
 import easyshoe from "./company/easyshoe.jpg";
 import hschool from "./company/school.jpg";
 import bbd from "./company/bbd.jpg";
+import upc from "./company/upc.png";
 
+import engine from "./myEngine.png";
 import broforce from "./broforce.png";
 import Portweb from "./Portweb.png";
 import snake from "./snake.jpg";
@@ -32,19 +38,16 @@ import Current from "./current.png";
 import animation from "./animation.png";
 import Zombie from "./Zombie.png";
 import Platformer from "./Platformer.png";
-import hacker from "./hack.png"
+import hacker from "./hack.png";
 import Tower from "./Tower.png";
 import todo from "./todo.png";
 import tetris from "./tetris.png";
 import team from "./team.png";
 
-import unity from "./tech/unity.png";
-import csharp from "./tech/csharp.png";
-import delphi from "./tech/delphi.png";
-import sql from "./tech/sql.png"
-
 export {
   logo,
+  upc,
+  engine,
   Tower,
   team,
   todo,
@@ -68,6 +71,10 @@ export {
   threejs,
   cplus,
   unreal,
+  unity,
+  csharp,
+  delphi,
+  sql,
   hschool,
   wits,
   easyshoe,
@@ -80,8 +87,4 @@ export {
   Visualweb,
   ShoeBag,
   Current,
-  unity,
-  csharp,
-  delphi,
-  sql,
 };
