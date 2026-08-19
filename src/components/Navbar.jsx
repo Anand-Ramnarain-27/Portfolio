@@ -9,9 +9,33 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const sections = navLinks
+      .map((nav) => {
+        const marker = document.getElementById(nav.id);
+        const section = marker ? marker.closest("section") : null;
+        return section ? { title: nav.title, el: section } : null;
+      })
+      .filter(Boolean);
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+
+      let current = "";
+      for (const { title, el } of sections) {
+        if (el.getBoundingClientRect().top <= 160) {
+          current = title;
+        }
+      }
+      setActive(current);
+    };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (

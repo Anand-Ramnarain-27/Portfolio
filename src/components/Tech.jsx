@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -25,6 +25,11 @@ const categories = [
 ];
 
 const Tech = () => {
+  const [filter, setFilter] = useState("All");
+
+  const visibleCategories =
+    filter === "All" ? categories : categories.filter((c) => c.label === filter);
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -32,8 +37,51 @@ const Tech = () => {
         <h2 className={styles.sectionHeadText}>Technologies.</h2>
       </motion.div>
 
-      <div className="mt-14 flex flex-col gap-10">
-        {categories.map((category, catIndex) => {
+      <div className="mt-8 flex flex-wrap gap-1.5">
+        <button
+          onClick={() => setFilter("All")}
+          style={
+            filter === "All"
+              ? { backgroundColor: "#e7eaee", borderColor: "#e7eaee", color: "#0a0b0d" }
+              : undefined
+          }
+          className={`hud-label px-3.5 py-2 border transition-colors duration-300 ${
+            filter === "All"
+              ? ""
+              : "bg-bg/70 border-line text-dim hover:text-ink hover:border-faint"
+          }`}
+        >
+          All
+        </button>
+        {categories.map((category) => {
+          const active = filter === category.label;
+          return (
+            <button
+              key={category.label}
+              onClick={() => setFilter(category.label)}
+              style={
+                active
+                  ? {
+                      backgroundColor: category.accent,
+                      borderColor: category.accent,
+                      color: "#0a0b0d",
+                    }
+                  : undefined
+              }
+              className={`hud-label px-3.5 py-2 border transition-colors duration-300 ${
+                active
+                  ? ""
+                  : "bg-bg/70 border-line text-dim hover:text-ink hover:border-faint"
+              }`}
+            >
+              {category.label}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-10 flex flex-col gap-10">
+        {visibleCategories.map((category, catIndex) => {
           const items = technologies.filter((t) =>
             category.names.includes(t.name)
           );
@@ -42,7 +90,9 @@ const Tech = () => {
           return (
             <motion.div
               key={category.label}
-              variants={fadeIn("up", "spring", catIndex * 0.15, 0.75)}
+              variants={fadeIn("up", "spring", catIndex * 0.1, 0.6)}
+              initial="hidden"
+              animate="show"
             >
               <p
                 className="hud-label mb-4"
