@@ -148,9 +148,12 @@ const Contact = () => {
         variants={slideIn("right", "tween", 0.2, 1)}
         className='relative xl:flex-1 xl:h-auto md:h-[550px] h-[350px] border border-line'
       >
-        <div className='absolute inset-0 z-10 pointer-events-none p-4 hud-label flex justify-between text-faint'>
-          <span>NODE · STANDBY</span>
-          <span className='text-accent-2'>● LIVE</span>
+        <div className='absolute inset-0 z-10 pointer-events-none p-4 hud-label flex flex-col justify-between text-faint'>
+          <div className='flex justify-between'>
+            <span>SIGNAL · TRANSMITTER</span>
+            <span className='text-accent-2'>● LIVE</span>
+          </div>
+          <span className='self-end'>click to ping</span>
         </div>
         <ContactVisual />
       </motion.div>
