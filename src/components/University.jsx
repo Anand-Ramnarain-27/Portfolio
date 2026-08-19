@@ -16,12 +16,14 @@ const UniversityCard = ({ item }) => {
   return (
     <VerticalTimelineElement
       contentStyle={{
-        background: "#1d1836",
-        color: "#fff",
+        background: "#101114",
+        color: "#e7eaee",
+        border: "1px solid #22252b",
+        boxShadow: "none",
       }}
-      contentArrowStyle={{ borderRight: "7px solid #232631" }}
+      contentArrowStyle={{ borderRight: "7px solid #101114" }}
       date={item.date}
-      iconStyle={{ background: item.iconBg }}
+      iconStyle={{ background: "#101114", border: "2px solid #4fd8c4" }}
       icon={
         <div className='flex justify-center items-center w-full h-full'>
           <img
@@ -33,9 +35,9 @@ const UniversityCard = ({ item }) => {
       }
     >
       <div>
-        <h3 className='text-white text-[24px] font-bold'>{item.title}</h3>
+        <h3 className='text-ink text-[22px] font-display font-bold'>{item.title}</h3>
         <p
-          className='text-secondary text-[16px] font-semibold'
+          className='text-accent-2 text-[14px] font-medium'
           style={{ margin: 0 }}
         >
           {item.company_name}
@@ -46,7 +48,7 @@ const UniversityCard = ({ item }) => {
         {item.points.map((point, index) => (
           <li
             key={`university-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
+            className='text-dim text-[14px] pl-1 tracking-wide'
           >
             {point}
           </li>

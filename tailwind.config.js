@@ -3,23 +3,28 @@ module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   mode: "jit",
   theme: {
+    fontFamily: {
+      display: ["'Big Shoulders Display'", "sans-serif"],
+      sans: ["'IBM Plex Sans'", "system-ui", "sans-serif"],
+      mono: ["'IBM Plex Mono'", "monospace"],
+    },
     extend: {
       colors: {
-        primary: "#050816",
-        secondary: "#aaa6c3",
-        tertiary: "#151030",
-        "black-100": "#100d25",
-        "black-200": "#090325",
-        "white-100": "#f3f3f3",
+        bg: "#0a0b0d",
+        surface: "#101114",
+        line: "#22252b",
+        "line-soft": "#1a1c20",
+        ink: "#e7eaee",
+        dim: "#9aa0aa",
+        faint: "#5c6169",
+        accent: "#ff7a3d",
+        "accent-2": "#4fd8c4",
       },
       boxShadow: {
-        card: "0px 35px 120px -15px #211e35",
+        card: "0px 24px 60px -20px rgba(0,0,0,0.55)",
       },
       screens: {
         xs: "450px",
-      },
-      backgroundImage: {
-        "hero-pattern": "url('/src/assets/herobg.png')",
       },
     },
   },
