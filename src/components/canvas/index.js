@@ -1,5 +1,5 @@
-import EarthCanvas from "./Earth";
 import StarsCanvas from "./Stars";
 import EngineCanvas from "./Engine";
+import ContactVisual from "./ContactVisual";
 
-export { EarthCanvas, StarsCanvas, EngineCanvas };
+export { StarsCanvas, EngineCanvas, ContactVisual };

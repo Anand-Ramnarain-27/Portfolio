@@ -26,9 +26,10 @@ body {
 /* ---------- HUD / render-pipeline motifs ---------- */
 
 .viewport-grid {
+  --grid-rgb: 255, 122, 61;
   background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 122, 61, 0.05) 39px, rgba(255, 122, 61, 0.05) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 122, 61, 0.05) 39px, rgba(255, 122, 61, 0.05) 40px);
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(var(--grid-rgb), 0.05) 39px, rgba(var(--grid-rgb), 0.05) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(var(--grid-rgb), 0.05) 39px, rgba(var(--grid-rgb), 0.05) 40px);
 }
 
 .hud-label {
@@ -36,18 +37,6 @@ body {
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-/* react-vertical-timeline-component overrides */
-.vertical-timeline::before {
-  background: #22252b;
-}
-
-.vertical-timeline-element-date {
-  color: #9aa0aa !important;
-  font-family: "IBM Plex Mono", monospace !important;
-  font-size: 12px !important;
-  letter-spacing: 0.04em;
 }
 
 .tag-pill {

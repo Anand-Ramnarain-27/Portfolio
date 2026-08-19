@@ -1,10 +1,28 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
-import { textVariant } from "../utils/motion";
-import { motion } from "framer-motion";
+import { fadeIn, textVariant } from "../utils/motion";
+
+const categories = [
+  {
+    label: "Languages",
+    accent: "#ff7a3d",
+    names: ["C++", "C#", "JavaScript", "SQL", "Delphi"],
+  },
+  {
+    label: "Engines & Graphics",
+    accent: "#4fd8c4",
+    names: ["Unity", "Unreal Engine", "DirectX 12", "Three JS"],
+  },
+  {
+    label: "Web & Tools",
+    accent: "#8f7cff",
+    names: ["React JS", "Node JS", "Git", "Tailwind CSS", "HTML 5", "CSS 3"],
+  },
+];
 
 const Tech = () => {
   return (
@@ -14,22 +32,45 @@ const Tech = () => {
         <h2 className={styles.sectionHeadText}>Technologies.</h2>
       </motion.div>
 
-      <div className="mt-14 grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3">
-        {technologies.map((technology) => (
-          <div
-            key={technology.name}
-            className="flex flex-col items-center gap-3 border border-line bg-surface/40 py-6 px-2 hover:border-accent/60 transition-colors"
-          >
-            <img
-              src={technology.icon}
-              alt={technology.name}
-              className="w-9 h-9 object-contain"
-            />
-            <span className="hud-label text-faint text-center leading-tight">
-              {technology.name}
-            </span>
-          </div>
-        ))}
+      <div className="mt-14 flex flex-col gap-10">
+        {categories.map((category, catIndex) => {
+          const items = technologies.filter((t) =>
+            category.names.includes(t.name)
+          );
+          if (items.length === 0) return null;
+
+          return (
+            <motion.div
+              key={category.label}
+              variants={fadeIn("up", "spring", catIndex * 0.15, 0.75)}
+            >
+              <p
+                className="hud-label mb-4"
+                style={{ color: category.accent }}
+              >
+                {category.label}
+              </p>
+              <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3">
+                {items.map((technology) => (
+                  <div
+                    key={technology.name}
+                    style={{ "--hover-accent": category.accent }}
+                    className="flex flex-col items-center gap-3 border border-line bg-surface/40 py-6 px-2 hover:border-[var(--hover-accent)] transition-colors group"
+                  >
+                    <img
+                      src={technology.icon}
+                      alt={technology.name}
+                      className="w-9 h-9 object-contain transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <span className="hud-label text-faint text-center leading-tight">
+                      {technology.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </>
   );

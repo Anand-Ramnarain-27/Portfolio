@@ -14,29 +14,46 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  featured,
 }) => {
   return (
     <motion.div
       variants={fadeIn("up", "spring", index * 0.1, 0.75)}
-      className="border border-line bg-surface/30 hover:border-accent/50 transition-colors group"
+      className={`relative border border-line bg-surface/30 hover:border-accent/50 transition-colors group ${
+        featured ? "lg:col-span-2" : ""
+      }`}
     >
-      <div className="relative w-full h-[200px] border-b border-line overflow-hidden">
+      <span className="absolute top-3 left-3 z-10 hud-label text-ink/80 bg-bg/70 px-1.5 py-0.5">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      <div
+        className={`relative w-full border-b border-line overflow-hidden ${
+          featured ? "h-[260px]" : "h-[200px]"
+        }`}
+      >
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <button
-          onClick={() => window.open(source_code_link, "_blank")}
-          aria-label={`View source for ${name}`}
-          className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center bg-bg/80 border border-line opacity-0 group-hover:opacity-100 transition-opacity"
-        >
-          <img src={github} alt="" className="w-4 h-4 object-contain" />
-        </button>
+        <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+          <button
+            onClick={() => window.open(source_code_link, "_blank")}
+            className="hud-label flex items-center gap-2 text-ink hover:text-accent transition-colors"
+          >
+            <img src={github} alt="" className="w-4 h-4 object-contain" />
+            View Source
+          </button>
+        </div>
       </div>
 
       <div className="p-5">
-        <h3 className="font-display font-bold text-ink text-[19px] leading-tight">
+        <h3
+          className={`font-display font-bold text-ink leading-tight ${
+            featured ? "text-[24px]" : "text-[19px]"
+          }`}
+        >
           {name}
         </h3>
         <p className="mt-2 text-dim text-[13.5px] leading-[22px]">
@@ -77,7 +94,12 @@ const Works = () => {
 
       <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
+          <ProjectCard
+            key={`project-${index}`}
+            index={index}
+            featured={index === 0}
+            {...project}
+          />
         ))}
       </div>
     </>

@@ -1,8 +1,10 @@
 import React, { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Points, PointMaterial } from "@react-three/drei";
+import * as THREE from "three";
 
 import CanvasLoader from "../Loader";
+import { heroModes } from "../../constants/heroModes";
 
 const PARTICLE_COUNT = 220;
 
@@ -29,6 +31,16 @@ const depthFragmentShader = `
 const EngineCore = ({ mode, autoRotate }) => {
   const shellRef = useRef();
   const particlesRef = useRef();
+  const keyLightRef = useRef();
+  const rimLightRef = useRef();
+
+  const theme = useMemo(
+    () => heroModes.find((m) => m.id === mode) || heroModes[0],
+    [mode]
+  );
+  const targetAccent = useMemo(() => new THREE.Color(theme.accent), [theme]);
+  const targetAccent2 = useMemo(() => new THREE.Color(theme.accent2), [theme]);
+  const targetParticle = useMemo(() => new THREE.Color(theme.particle), [theme]);
 
   const particleData = useMemo(() => {
     const radii = new Float32Array(PARTICLE_COUNT);
@@ -55,10 +67,21 @@ const EngineCore = ({ mode, autoRotate }) => {
   );
 
   useFrame((state, delta) => {
+    const lerpSpeed = 1 - Math.pow(0.001, delta);
+
+    if (keyLightRef.current) {
+      keyLightRef.current.color.lerp(targetAccent, lerpSpeed);
+    }
+    if (rimLightRef.current) {
+      rimLightRef.current.color.lerp(targetAccent2, lerpSpeed);
+    }
     if (shellRef.current) {
       shellRef.current.rotation.y -= 0.07 * delta;
+      shellRef.current.material.color.lerp(targetAccent2, lerpSpeed);
     }
     if (particlesRef.current) {
+      particlesRef.current.material.color.lerp(targetParticle, lerpSpeed);
+
       const t = state.clock.elapsedTime;
       const posAttr = particlesRef.current.geometry.attributes.position;
       for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -77,18 +100,20 @@ const EngineCore = ({ mode, autoRotate }) => {
     <>
       <ambientLight intensity={1.4} color="#30343c" />
       <pointLight
+        ref={keyLightRef}
         position={[3, 2.5, 3]}
         intensity={26}
         distance={20}
         decay={2}
-        color="#ff7a3d"
+        color={heroModes[0].accent}
       />
       <pointLight
+        ref={rimLightRef}
         position={[-3, -1.5, -2.5]}
         intensity={14}
         distance={20}
         decay={2}
-        color="#4fd8c4"
+        color={heroModes[0].accent2}
       />
 
       <mesh>
@@ -111,7 +136,7 @@ const EngineCore = ({ mode, autoRotate }) => {
           />
         )}
         {mode === "wire" && (
-          <meshBasicMaterial color="#ff7a3d" wireframe />
+          <meshBasicMaterial color={theme.accent} wireframe />
         )}
       </mesh>
 
@@ -119,7 +144,7 @@ const EngineCore = ({ mode, autoRotate }) => {
         <mesh ref={shellRef}>
           <icosahedronGeometry args={[1.62, 0]} />
           <meshBasicMaterial
-            color="#4fd8c4"
+            color={heroModes[0].accent2}
             wireframe
             transparent
             opacity={0.28}
@@ -130,7 +155,7 @@ const EngineCore = ({ mode, autoRotate }) => {
       <Points ref={particlesRef} positions={positions} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#ffb590"
+          color={heroModes[0].particle}
           size={0.028}
           sizeAttenuation
           depthWrite={false}
