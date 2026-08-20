@@ -33,7 +33,7 @@ import broforce from "./broforce.png";
 import animation from "./animation.png";
 import Platformer from "./Platformer.png";
 import splatWalker from "./splatWalker.png";
-import splatWalkerUnity from "./splatWalkerUnity.png";
+import splatWalkerUnity from "./splatWalkerUnity.gif";
 import hacker from "./hack.png";
 import Tower from "./Tower.png";
 import team from "./team.png";
