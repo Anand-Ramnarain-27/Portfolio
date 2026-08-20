@@ -19,6 +19,7 @@ import {
   animation,
   Platformer,
   splatWalker,
+  splatWalkerUnity,
   team,
   threejs,
   unity,
@@ -197,6 +198,20 @@ const projects = [
       "https://github.com/Anand-Ramnarain-27/splat-walker",
     live_demo_link:
       "https://anand-ramnarain-27.github.io/splat-walker/",
+  },
+
+  {
+    name: "Splat Walker (Unity)",
+    description:
+      "A Unity port of Splat Walker, rebuilt on Unity's GPU-compute Gaussian splat rendering pipeline instead of the browser. Tracked down and fixed three distinct rendering bugs along the way — an SH-band mismatch corrupting the shader's color sampling, a coordinate-flip sign error in the camera framing math, and a corrupted-splat filtering issue — each producing the same misleading symptom before being root-caused individually.",
+    tags: [
+      { name: "Unity", color: "blue-text-gradient" },
+      { name: "C#", color: "green-text-gradient" },
+      { name: "Gaussian Splatting", color: "pink-text-gradient" },
+    ],
+    image: splatWalkerUnity,
+    source_code_link:
+      "https://github.com/Anand-Ramnarain-27/splat-walker-unity",
   },
 
   {
