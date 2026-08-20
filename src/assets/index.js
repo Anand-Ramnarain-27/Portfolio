@@ -31,8 +31,8 @@ import upc from "./company/upc.png";
 import engine from "./myEngine.png";
 import broforce from "./broforce.png";
 import animation from "./animation.png";
-import Zombie from "./Zombie.png";
 import Platformer from "./Platformer.png";
+import splatWalker from "./splatWalker.png";
 import hacker from "./hack.png";
 import Tower from "./Tower.png";
 import team from "./team.png";
@@ -71,6 +71,6 @@ export {
   easyshoe,
   broforce,
   animation,
-  Zombie,
   Platformer,
+  splatWalker,
 };

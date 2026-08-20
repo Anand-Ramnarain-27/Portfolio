@@ -17,8 +17,8 @@ import {
   hschool,
   broforce,
   animation,
-  Zombie,
   Platformer,
+  splatWalker,
   team,
   threejs,
   unity,
@@ -184,17 +184,19 @@ const projects = [
   },
 
   {
-    name: "Zombie Mayhem",
+    name: "Splat Walker",
     description:
-      "A top-down survival shooter developed in Unity using C#, featuring enemy AI with state machines, wave spawning systems, and player progression mechanics. Focused on combat feel, responsiveness, and overall gameplay performance.",
+      "A Gaussian splat viewer built in Three.js that treats a captured path as a first-class citizen: retrace the exact route a 360° scan walked, with smooth spline playback, free-fly exploration, and a side-by-side comparison view. Real-world capture data auto-analyzed (PCA, percentile-based framing) to build the camera path, not hand-authored.",
     tags: [
-      { name: "C#", color: "blue-text-gradient" },
-      { name: "Unity", color: "green-text-gradient" },
-      { name: "AI Systems", color: "pink-text-gradient" },
+      { name: "Three JS", color: "blue-text-gradient" },
+      { name: "TypeScript", color: "green-text-gradient" },
+      { name: "Gaussian Splatting", color: "pink-text-gradient" },
     ],
-    image: Zombie,
+    image: splatWalker,
     source_code_link:
-      "https://github.com/Anand-Ramnarain-27/Zombie_Survivor",
+      "https://github.com/Anand-Ramnarain-27/splat-walker",
+    live_demo_link:
+      "https://anand-ramnarain-27.github.io/splat-walker/",
   },
 
   {

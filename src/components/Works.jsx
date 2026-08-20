@@ -14,6 +14,7 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  live_demo_link,
   featured,
 }) => {
   return (
@@ -37,7 +38,7 @@ const ProjectCard = ({
           alt={name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+        <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end gap-4 p-4">
           <button
             onClick={() => window.open(source_code_link, "_blank")}
             className="hud-label flex items-center gap-2 text-ink hover:text-accent transition-colors"
@@ -45,6 +46,14 @@ const ProjectCard = ({
             <img src={github} alt="" className="w-4 h-4 object-contain" />
             View Source
           </button>
+          {live_demo_link && (
+            <button
+              onClick={() => window.open(live_demo_link, "_blank")}
+              className="hud-label flex items-center gap-2 text-ink hover:text-accent transition-colors"
+            >
+              Live Demo ↗
+            </button>
+          )}
         </div>
       </div>
 
