@@ -20,6 +20,7 @@ import {
   Platformer,
   splatWalker,
   splatWalkerUnity,
+  geoStreamSdk,
   team,
   threejs,
   unity,
@@ -212,6 +213,20 @@ const projects = [
     image: splatWalkerUnity,
     source_code_link:
       "https://github.com/Anand-Ramnarain-27/splat-walker-unity",
+  },
+
+  {
+    name: "Geo Stream SDK",
+    description:
+      "An installable Unity SDK for streaming large-scale LiDAR point cloud data (LAS) at runtime, aimed at real-world geospatial visualization workflows. Partitions a point cloud into a spatial grid at import time, then streams tiles in and out based on camera distance through a GPU-instanced renderer with a memory budget, so multi-million-point datasets never need to be fully resident.",
+    tags: [
+      { name: "Unity", color: "blue-text-gradient" },
+      { name: "C#", color: "green-text-gradient" },
+      { name: "Point Cloud", color: "pink-text-gradient" },
+    ],
+    image: geoStreamSdk,
+    source_code_link:
+      "https://github.com/Anand-Ramnarain-27/geo-stream-sdk",
   },
 
   {
