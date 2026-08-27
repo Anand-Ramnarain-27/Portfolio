@@ -35,6 +35,7 @@ import Platformer from "./Platformer.png";
 import splatWalker from "./splatWalker.png";
 import splatWalkerUnity from "./splatWalkerUnity.gif";
 import geoStreamSdk from "./geoStreamSdk.gif";
+import crossEngineSpatialSdk from "./crossEngineSpatialSdk.png";
 import hacker from "./hack.png";
 import Tower from "./Tower.png";
 import team from "./team.png";
@@ -77,4 +78,5 @@ export {
   splatWalker,
   splatWalkerUnity,
   geoStreamSdk,
+  crossEngineSpatialSdk,
 };
