@@ -161,7 +161,7 @@ const projects = [
   {
     name: "Cross-Engine Spatial Data Streaming SDK",
     description:
-      "An engine-independent C++20 SDK for streaming large tiled spatial datasets — a quadtree spatial index, screen-space-error LOD with hysteresis, asynchronous priority-driven tile streaming, and memory-budgeted caching behind one façade. Proven three different ways: a Unity plugin, an Unreal plugin, and a direct C++ integration into a custom DirectX 12 engine, each making a different call on ABI boundary and coordinate conversion. 187 automated tests; a stress test across three dataset sizes (up to 16,384 tiles) shows the streaming working set stays flat where full residency scales linearly.",
+      "An engine-independent C++20 SDK for streaming large tiled spatial datasets, with quadtree indexing, LOD, and memory-budgeted async streaming behind one façade. Proven with Unity, Unreal, and a custom DirectX 12 engine, backed by 187 automated tests.",
     tags: [
       { name: "C++20", color: "blue-text-gradient" },
       { name: "Cross-Engine", color: "green-text-gradient" },
