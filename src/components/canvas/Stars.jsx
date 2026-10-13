@@ -3,9 +3,14 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
 
+/** Slowly rotating star field behind the Contact section. */
+const STAR_COUNT = 1666;
+
 const Stars = (props) => {
   const ref = useRef();
-  const [sphere] = useState(() => random.inSphere(new Float32Array(4998), { radius: 1.2 }));
+  const [sphere] = useState(() =>
+    random.inSphere(new Float32Array(STAR_COUNT * 3), { radius: 1.2 }),
+  );
 
   useFrame((state, delta) => {
     ref.current.rotation.x -= delta / 10;
@@ -17,7 +22,7 @@ const Stars = (props) => {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
         <PointMaterial
           transparent
-          color='#e7eaee'
+          color="#e7eaee"
           size={0.002}
           sizeAttenuation={true}
           depthWrite={false}
@@ -29,7 +34,7 @@ const Stars = (props) => {
 
 const StarsCanvas = () => {
   return (
-    <div className='w-full h-auto absolute inset-0 z-[-1]'>
+    <div className="absolute inset-0 z-[-1] h-auto w-full">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <Stars />

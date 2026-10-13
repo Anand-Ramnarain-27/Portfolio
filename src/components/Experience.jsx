@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -9,7 +8,7 @@ import TimelineList from "./Timeline";
 
 const Experience = () => {
   return (
-    <>
+    <SectionWrapper id="work">
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>What I have done so far</p>
         <h2 className={styles.sectionHeadText}>Work Experience.</h2>
@@ -18,8 +17,8 @@ const Experience = () => {
       <div className="mt-14 max-w-3xl">
         <TimelineList items={experiences} accent="#ff7a3d" />
       </div>
-    </>
+    </SectionWrapper>
   );
 };
 
-export default SectionWrapper(Experience, "work");
+export default Experience;

@@ -1,3 +1,7 @@
+/**
+ * Hero view modes. `accent`/`accent2` theme the HUD and lights, `particle`
+ * tints the orbiting particles, and `gridRgb` feeds the background grid.
+ */
 export const heroModes = [
   {
     id: "albedo",

@@ -1,41 +1,42 @@
 import {
-  mobile,
-  backend,
-  creator,
-  web,
-  javascript,
-  html,
-  css,
-  reactjs,
-  tailwind,
-  nodejs,
-  git,
-  cplus,
-  unreal,
-  wits,
-  easyshoe,
-  hschool,
-  broforce,
   animation,
+  backend,
+  bbd,
+  broforce,
+  cplus,
+  creator,
+  crossEngineSpatialSdk,
+  csharp,
+  css,
+  delphi,
+  easyshoe,
+  git,
+  hacker,
+  hschool,
+  html,
+  javascript,
+  mobile,
+  nodejs,
   Platformer,
+  reactjs,
   splatWalker,
   splatWalkerUnity,
-  geoStreamSdk,
-  crossEngineSpatialSdk,
+  sql,
+  tailwind,
   team,
   threejs,
-  unity,
-  csharp,
-  delphi,
-  sql,
-  hacker,
   Tower,
-  bbd,
+  unity,
+  unreal,
   upc,
-  engine
+  web,
+  wits,
 } from "../assets";
+import bbdTitle from "../assets/bbd/bbd-title.webp";
+import phxEnvHero from "../assets/phoenix/environment-hero.webp";
+import geoDemoPoster from "../assets/sdk/geo-demo-poster.webp";
 
-// ---------------- NAV ----------------
+/** Navbar entries. Each `id` matches the anchor rendered by SectionWrapper. */
 export const navLinks = [
   { id: "about", title: "About" },
   { id: "work", title: "Experience" },
@@ -44,16 +45,26 @@ export const navLinks = [
   { id: "contact", title: "Contact" },
 ];
 
-// ---------------- SERVICES ----------------
-const services = [
+/** Profile links shown in the footer. */
+export const socials = [
+  { name: "GitHub", url: "https://github.com/Anand-Ramnarain-27" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/anand-ramnarain-585096336" },
+  { name: "Email", url: "mailto:anandram0207@gmail.com" },
+  // To link a CV, add the PDF to /public and point at it through BASE_URL so
+  // the path survives the /Portfolio/ prefix on GitHub Pages:
+  // { name: "CV", url: `${import.meta.env.BASE_URL}Anand_Ramnarain_CV.pdf` },
+];
+
+/** Role cards in the About section. */
+export const services = [
   { title: "Gameplay Programmer", icon: web },
   { title: "Game Engine Developer", icon: mobile },
   { title: "Full-Stack Developer", icon: backend },
   { title: "Interactive Systems Designer", icon: creator },
 ];
 
-// ---------------- TECHNOLOGIES ----------------
-const technologies = [
+/** Every technology shown in the Tech section; grouping happens in Tech.jsx. */
+export const technologies = [
   { name: "C++", icon: cplus },
   { name: "C#", icon: csharp },
   { name: "Unity", icon: unity },
@@ -71,13 +82,12 @@ const technologies = [
   { name: "Delphi", icon: delphi },
 ];
 
-// ---------------- EDUCATION ----------------
-const university = [
+/** Education timeline, newest first. */
+export const university = [
   {
     title: "Master’s in Advanced Programming for AAA Games",
-    company_name: "Universitat Politècnica de Catalunya (UPC)",
+    company: "Universitat Politècnica de Catalunya (UPC)",
     icon: upc,
-    iconBg: "#383E56",
     date: "October 2025 - Present",
     points: [
       "Specialising in advanced C++ for real-time systems, memory management, and performance optimisation.",
@@ -89,9 +99,8 @@ const university = [
   },
   {
     title: "BA Digital Arts (Honours)",
-    company_name: "University of the Witwatersrand",
+    company: "University of the Witwatersrand",
     icon: wits,
-    iconBg: "#383E56",
     date: "January 2021 - December 2024",
     points: [
       "Specialised in Game Design and Interactive Media.",
@@ -103,9 +112,8 @@ const university = [
   },
   {
     title: "National Senior Certificate",
-    company_name: "Saint Martin's High School",
+    company: "Saint Martin's High School",
     icon: hschool,
-    iconBg: "#383E56",
     date: "January 2016 - December 2020",
     points: [
       "Completed secondary education with a focus on analytical thinking and problem-solving.",
@@ -113,13 +121,12 @@ const university = [
   },
 ];
 
-// ---------------- EXPERIENCE ----------------
-const experiences = [
+/** Work timeline, newest first. */
+export const experiences = [
   {
     title: "Software Development Vacation Work",
-    company_name: "BBD Software",
+    company: "BBD Software",
     icon: bbd,
-    iconBg: "#383E56",
     date: "November 2024 - December 2024",
     points: [
       "Built a full-stack web application using React, TypeScript, PostgreSQL, and Prisma ORM.",
@@ -130,9 +137,8 @@ const experiences = [
   },
   {
     title: "Frontend Developer",
-    company_name: "Easy Shoe & Bag Repair",
+    company: "Easy Shoe & Bag Repair",
     icon: easyshoe,
-    iconBg: "#383E56",
     date: "March 2020 - April 2021",
     points: [
       "Developed and maintained a business website using GoDaddy.",
@@ -142,168 +148,126 @@ const experiences = [
   },
 ];
 
-// ---------------- PROJECTS ----------------
-const projects = [
+/**
+ * Project cards, in display order. A card with `caseStudy` set (a slug from
+ * constants/caseStudies.js) is listed under Featured and links to its case
+ * study; the rest appear under More projects. Empty link fields are hidden.
+ */
+export const projects = [
   {
-    name: "Custom 3D Game Engine (DirectX 12)",
+    name: "Phoenix Engine — Custom C++ / DirectX 12 Engine",
+    caseStudy: "phoenix-engine",
     description:
-      "A custom 3D game engine built in C++ using DirectX 12, featuring a real-time rendering pipeline, PBR shading, and image-based lighting (IBL). Focused on performance, memory management, and modern graphics programming techniques.",
-    tags: [
-      { name: "C++", color: "blue-text-gradient" },
-      { name: "DirectX12", color: "green-text-gradient" },
-      { name: "Graphics", color: "pink-text-gradient" },
-    ],
-    image: engine,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/Anand-PhoenixEngine",
+      "My own DirectX 12 engine, built from scratch in C++: deferred PBR with tiled light culling and cascaded shadows, GPU-simulated particles and trails, volumetric fog and a full post-process stack, GPU skinning, physics, AI navigation and a custom ImGui editor. 50 HLSL shaders, 4 public releases.",
+    tags: ["C++", "DirectX12", "Graphics"],
+    image: phxEnvHero,
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/Anand-PhoenixEngine",
+  },
+
+  {
+    name: "Bound by Death",
+    caseStudy: "bound-by-death",
+    description:
+      "A top-down co-op hack-and-slash made by a 17-person team on our own engine. I built the prefab system, post-processing and screen effects, light culling, a data-driven haptics system, and the VFX for both playable characters.",
+    tags: ["C++", "Team of 17", "VFX / Rendering"],
+    image: bbdTitle,
+    websiteUrl: "https://ravenwhisp.github.io/Ravenwhisp/#home",
+    itchUrl: "https://ravenwhisp-studios.itch.io/",
+    sourceUrl: "",
   },
 
   {
     name: "Cross-Engine Spatial Data Streaming SDK",
+    caseStudy: "cross-engine-spatial-sdk",
     description:
       "An engine-independent C++20 SDK for streaming large tiled spatial datasets, with quadtree indexing, LOD, and memory-budgeted async streaming behind one façade. Proven with Unity, Unreal, and a custom DirectX 12 engine, backed by 187 automated tests.",
-    tags: [
-      { name: "C++20", color: "blue-text-gradient" },
-      { name: "Cross-Engine", color: "green-text-gradient" },
-      { name: "Streaming SDK", color: "pink-text-gradient" },
-    ],
+    tags: ["C++20", "Cross-Engine", "Streaming SDK"],
     image: crossEngineSpatialSdk,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/cross-engine-spatial-sdk",
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/cross-engine-spatial-sdk",
   },
 
   {
     name: "Tower Defense",
     description:
       "A Unity-based tower defense game built in C#, featuring AI-driven enemies using behaviour trees and procedural wave generation. Designed scalable gameplay systems and dynamic difficulty to create engaging and replayable combat scenarios.",
-    tags: [
-      { name: "C#", color: "blue-text-gradient" },
-      { name: "Unity", color: "green-text-gradient" },
-      { name: "AI", color: "pink-text-gradient" },
-    ],
+    tags: ["C#", "Unity", "AI"],
     image: Tower,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/TowerDefense_Game",
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/Tower_Defense_Game_Build",
   },
 
   {
     name: "Broforce Clone",
     description:
       "An action platformer built in Unity using C#, featuring destructible environments, character switching, and combat systems inspired by Broforce. Focused on gameplay responsiveness, physics interactions, and player feedback systems.",
-    tags: [
-      { name: "Unity", color: "blue-text-gradient" },
-      { name: "C#", color: "green-text-gradient" },
-      { name: "Gameplay", color: "pink-text-gradient" },
-    ],
+    tags: ["Unity", "C#", "Gameplay"],
     image: broforce,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/Broforce-Game-Files",
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/Broforce-Game-Files",
   },
 
   {
     name: "Splat Walker",
+    caseStudy: "splat-walker",
     description:
       "A Gaussian splat viewer built in Three.js that treats a captured path as a first-class citizen: retrace the exact route a 360° scan walked, with smooth spline playback, free-fly exploration, and a side-by-side comparison view. Real-world capture data auto-analyzed (PCA, percentile-based framing) to build the camera path, not hand-authored.",
-    tags: [
-      { name: "Three JS", color: "blue-text-gradient" },
-      { name: "TypeScript", color: "green-text-gradient" },
-      { name: "Gaussian Splatting", color: "pink-text-gradient" },
-    ],
+    tags: ["Three JS", "TypeScript", "Gaussian Splatting"],
     image: splatWalker,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/splat-walker",
-    live_demo_link:
-      "https://anand-ramnarain-27.github.io/splat-walker/",
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/splat-walker",
+    demoUrl: "https://anand-ramnarain-27.github.io/splat-walker/",
   },
 
   {
     name: "Splat Walker (Unity)",
+    caseStudy: "splat-walker",
     description:
       "A Unity port of Splat Walker, rebuilt on Unity's GPU-compute Gaussian splat rendering pipeline instead of the browser. Tracked down and fixed three distinct rendering bugs along the way — an SH-band mismatch corrupting the shader's color sampling, a coordinate-flip sign error in the camera framing math, and a corrupted-splat filtering issue — each producing the same misleading symptom before being root-caused individually.",
-    tags: [
-      { name: "Unity", color: "blue-text-gradient" },
-      { name: "C#", color: "green-text-gradient" },
-      { name: "Gaussian Splatting", color: "pink-text-gradient" },
-    ],
+    tags: ["Unity", "C#", "Gaussian Splatting"],
     image: splatWalkerUnity,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/splat-walker-unity",
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/splat-walker-unity",
   },
 
   {
     name: "Geo Stream SDK",
+    caseStudy: "geo-stream-sdk",
     description:
       "An installable Unity SDK for streaming large-scale LiDAR point cloud data (LAS) at runtime, aimed at real-world geospatial visualization workflows. Partitions a point cloud into a spatial grid at import time, then streams tiles in and out based on camera distance through a GPU-instanced renderer with a memory budget, so multi-million-point datasets never need to be fully resident.",
-    tags: [
-      { name: "Unity", color: "blue-text-gradient" },
-      { name: "C#", color: "green-text-gradient" },
-      { name: "Point Cloud", color: "pink-text-gradient" },
-    ],
-    image: geoStreamSdk,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/geo-stream-sdk",
+    tags: ["Unity", "C#", "Point Cloud"],
+    image: geoDemoPoster,
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/geo-stream-sdk",
   },
 
   {
     name: "Team Formation Platform",
     description:
       "A full-stack application built using an NX monorepo with TypeScript, Prisma, and Azure Functions. Includes features like idea voting, dynamic team allocation, and role-based access control within a scalable system architecture.",
-    tags: [
-      { name: "TypeScript", color: "blue-text-gradient" },
-      { name: "Azure", color: "green-text-gradient" },
-      { name: "Full-Stack", color: "pink-text-gradient" },
-    ],
+    tags: ["TypeScript", "Azure", "Full-Stack"],
     image: team,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/team-formation-project",
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/team-formation-project",
   },
 
   {
     name: "2.5D Platformer",
     description:
       "A 2.5D platformer developed in Unreal Engine using Blueprints and C++, focusing on player movement, collision systems, and level scripting. Explores hybrid Blueprint and C++ workflows for responsive gameplay design.",
-    tags: [
-      { name: "Unreal", color: "blue-text-gradient" },
-      { name: "C++", color: "green-text-gradient" },
-      { name: "Gameplay", color: "pink-text-gradient" },
-    ],
+    tags: ["Unreal", "C++", "Gameplay"],
     image: Platformer,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/2.5D_Platformer",
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/2.5D_Platformer",
   },
 
   {
     name: "Hacker vs Cyberspace",
     description:
       "A browser-based JavaScript game built without external engines, focusing on core game loop implementation, DOM rendering, and interactive systems. Strengthened understanding of fundamental game programming concepts and logic.",
-    tags: [
-      { name: "JavaScript", color: "blue-text-gradient" },
-      { name: "Game Dev", color: "green-text-gradient" },
-    ],
+    tags: ["JavaScript", "Game Dev"],
     image: hacker,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/digital_arts_project",
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/digital_arts_project",
   },
 
   {
     name: "3D Animation Project",
     description:
       "A 3D animation created in Blender, focusing on character movement, timing, and visual storytelling. Includes asset creation, rigging, and animation sequencing to demonstrate understanding of animation pipelines and workflows.",
-    tags: [
-      { name: "Blender", color: "blue-text-gradient" },
-      { name: "Animation", color: "green-text-gradient" },
-      { name: "3D", color: "pink-text-gradient" },
-    ],
+    tags: ["Blender", "Animation", "3D"],
     image: animation,
-    source_code_link:
-      "https://github.com/Anand-Ramnarain-27/My_Animation",
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/My_Animation",
   },
 ];
-
-export {
-  services,
-  technologies,
-  experiences,
-  projects,
-  university,
-};

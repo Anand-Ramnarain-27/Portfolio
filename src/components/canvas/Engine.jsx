@@ -1,12 +1,19 @@
-import React, { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
-import CanvasLoader from "../Loader";
 import { heroModes } from "../../constants/heroModes";
+import { useOrbitingParticles } from "../../hooks/useOrbitingParticles";
+import CanvasLoader from "../Loader";
 
 const PARTICLE_COUNT = 220;
+
+/**
+ * Visualises linear view-space depth (near = white, far = black) for the
+ * "Depth" debug view. The near/far uniforms are tuned to the core mesh so the
+ * gradient spans its full silhouette.
+ */
 
 const depthVertexShader = `
   varying float vViewDist;
@@ -28,45 +35,42 @@ const depthFragmentShader = `
   }
 `;
 
+/**
+ * The hero scene: a faceted core mesh whose material swaps with the selected
+ * G-buffer-style view (albedo / normal / depth / wireframe), an outer wire
+ * shell and orbiting particles. Light and particle colours ease towards the
+ * active theme rather than snapping.
+ */
 const EngineCore = ({ mode, autoRotate }) => {
   const shellRef = useRef();
   const particlesRef = useRef();
   const keyLightRef = useRef();
   const rimLightRef = useRef();
 
-  const theme = useMemo(
-    () => heroModes.find((m) => m.id === mode) || heroModes[0],
-    [mode]
-  );
+  const theme = useMemo(() => heroModes.find((m) => m.id === mode) || heroModes[0], [mode]);
   const targetAccent = useMemo(() => new THREE.Color(theme.accent), [theme]);
   const targetAccent2 = useMemo(() => new THREE.Color(theme.accent2), [theme]);
   const targetParticle = useMemo(() => new THREE.Color(theme.particle), [theme]);
 
-  const particleData = useMemo(() => {
-    const radii = new Float32Array(PARTICLE_COUNT);
-    const angles = new Float32Array(PARTICLE_COUNT);
-    const speeds = new Float32Array(PARTICLE_COUNT);
-    const heights = new Float32Array(PARTICLE_COUNT);
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      radii[i] = 2.1 + Math.random() * 1.6;
-      angles[i] = Math.random() * Math.PI * 2;
-      speeds[i] = 0.08 + Math.random() * 0.15;
-      heights[i] = (Math.random() - 0.5) * 2.4;
-    }
-    return { radii, angles, speeds, heights };
-  }, []);
-
-  const positions = useMemo(() => new Float32Array(PARTICLE_COUNT * 3), []);
+  const particles = useOrbitingParticles(PARTICLE_COUNT, {
+    radius: [2.1, 3.7],
+    speed: [0.08, 0.23],
+    height: 2.4,
+    bobAmount: 0.08,
+    bobSpeed: 0.6,
+  });
 
   const depthUniforms = useMemo(
     () => ({
       uNear: { value: 3.55 },
       uFar: { value: 6.85 },
     }),
-    []
+    [],
   );
 
   useFrame((state, delta) => {
+    // Frame-rate independent easing: reaches ~99.9% of the target colour in
+    // one second regardless of FPS.
     const lerpSpeed = 1 - Math.pow(0.001, delta);
 
     if (keyLightRef.current) {
@@ -81,18 +85,7 @@ const EngineCore = ({ mode, autoRotate }) => {
     }
     if (particlesRef.current) {
       particlesRef.current.material.color.lerp(targetParticle, lerpSpeed);
-
-      const t = state.clock.elapsedTime;
-      const posAttr = particlesRef.current.geometry.attributes.position;
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const a = particleData.angles[i] + t * particleData.speeds[i];
-        const r = particleData.radii[i];
-        posAttr.array[i * 3] = Math.cos(a) * r;
-        posAttr.array[i * 3 + 1] =
-          particleData.heights[i] + Math.sin(t * 0.6 + i) * 0.08;
-        posAttr.array[i * 3 + 2] = Math.sin(a) * r * 0.6;
-      }
-      posAttr.needsUpdate = true;
+      particles.update(particlesRef.current, state.clock.elapsedTime);
     }
   });
 
@@ -135,24 +128,17 @@ const EngineCore = ({ mode, autoRotate }) => {
             fragmentShader={depthFragmentShader}
           />
         )}
-        {mode === "wire" && (
-          <meshBasicMaterial color={theme.accent} wireframe />
-        )}
+        {mode === "wire" && <meshBasicMaterial color={theme.accent} wireframe />}
       </mesh>
 
       {mode !== "wire" && (
         <mesh ref={shellRef}>
           <icosahedronGeometry args={[1.62, 0]} />
-          <meshBasicMaterial
-            color={heroModes[0].accent2}
-            wireframe
-            transparent
-            opacity={0.28}
-          />
+          <meshBasicMaterial color={heroModes[0].accent2} wireframe transparent opacity={0.28} />
         </mesh>
       )}
 
-      <Points ref={particlesRef} positions={positions} stride={3} frustumCulled={false}>
+      <Points ref={particlesRef} positions={particles.positions} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
           color={heroModes[0].particle}
@@ -179,6 +165,8 @@ const EngineCore = ({ mode, autoRotate }) => {
 
 const EngineCanvas = ({ mode }) => {
   const [autoRotate, setAutoRotate] = useState(true);
+
+  // Respect the OS "reduce motion" setting, including if it changes while open.
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");

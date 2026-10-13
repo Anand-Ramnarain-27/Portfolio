@@ -1,82 +1,86 @@
-import logo from "./logo.svg";
+/*
+ * Shared image assets. Case-study media (videos and their posters) is imported
+ * directly by the case-study modules instead, so it stays next to the content
+ * that uses it.
+ */
+
+// UI icons
+import github from "./github.png";
+
+// About section role icons
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
 import web from "./web.png";
-import github from "./github.png";
-import menu from "./menu.svg";
-import close from "./close.svg";
 
+// Technology logos
+import cplus from "./tech/cplus.png";
+import csharp from "./tech/csharp.png";
 import css from "./tech/css.png";
+import delphi from "./tech/delphi.png";
 import git from "./tech/git.png";
 import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
 import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
+import sql from "./tech/sql.png";
 import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
-import cplus from "./tech/cplus.png";
-import unreal from "./tech/unreal.png";
 import unity from "./tech/unity.png";
-import csharp from "./tech/csharp.png";
-import delphi from "./tech/delphi.png";
-import sql from "./tech/sql.png";
+import unreal from "./tech/unreal.png";
 
-import wits from "./company/wits.png";
+// Employer and school logos
+import bbd from "./company/bbd.jpg";
 import easyshoe from "./company/easyshoe.jpg";
 import hschool from "./company/school.jpg";
-import bbd from "./company/bbd.jpg";
 import upc from "./company/upc.png";
+import wits from "./company/wits.png";
 
-import engine from "./myEngine.png";
-import broforce from "./broforce.png";
-import animation from "./animation.png";
-import Platformer from "./Platformer.png";
-import splatWalker from "./splatWalker.png";
-import splatWalkerUnity from "./splatWalkerUnity.gif";
+// Project thumbnails
+import animation from "./animation.webp";
+import broforce from "./broforce.webp";
+import crossEngineSpatialSdk from "./crossEngineSpatialSdk.webp";
 import geoStreamSdk from "./geoStreamSdk.gif";
-import crossEngineSpatialSdk from "./crossEngineSpatialSdk.png";
-import hacker from "./hack.png";
-import Tower from "./Tower.png";
-import team from "./team.png";
+import hacker from "./hack.webp";
+import Platformer from "./Platformer.webp";
+import splatWalker from "./splatWalker.webp";
+import splatWalkerUnity from "./splatWalkerUnity.gif";
+import team from "./team.webp";
+import Tower from "./Tower.webp";
 
 export {
-  logo,
-  upc,
-  engine,
-  Tower,
-  team,
-  bbd,
-  hacker,
+  animation,
   backend,
+  bbd,
+  broforce,
+  cplus,
   creator,
-  mobile,
-  web,
-  github,
-  menu,
-  close,
+  crossEngineSpatialSdk,
+  csharp,
   css,
+  delphi,
+  easyshoe,
+  geoStreamSdk,
   git,
+  github,
+  hacker,
+  hschool,
   html,
   javascript,
+  mobile,
   nodejs,
-  reactjs,
-  tailwind,
-  threejs,
-  cplus,
-  unreal,
-  unity,
-  csharp,
-  delphi,
-  sql,
-  hschool,
-  wits,
-  easyshoe,
-  broforce,
-  animation,
   Platformer,
+  reactjs,
   splatWalker,
   splatWalkerUnity,
-  geoStreamSdk,
-  crossEngineSpatialSdk,
+  sql,
+  tailwind,
+  team,
+  threejs,
+  Tower,
+  unity,
+  unreal,
+  upc,
+  web,
+  wits,
 };

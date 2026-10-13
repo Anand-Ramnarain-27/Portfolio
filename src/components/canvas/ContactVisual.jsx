@@ -1,14 +1,21 @@
-import React, { Suspense, useEffect, useMemo, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
+import { useOrbitingParticles } from "../../hooks/useOrbitingParticles";
 import CanvasLoader from "../Loader";
 
 const PARTICLE_COUNT = 70;
+/** Rings are pooled: a new ping reuses the oldest ring slot. */
 const MAX_PINGS = 5;
-const PING_DURATION = 2.2;
+const PING_DURATION = 2.2; // seconds
+const AUTO_PING_INTERVAL_MS = 2800;
 
+/**
+ * Contact-section visual: a rotating "transmitter" that emits an expanding
+ * ring on a timer and on click, and leans gently towards the pointer.
+ */
 const SignalNode = () => {
   const groupRef = useRef();
   const coreRef = useRef();
@@ -25,27 +32,28 @@ const SignalNode = () => {
 
   useEffect(() => {
     triggerPing();
-    const id = setInterval(triggerPing, 2800);
+    const id = setInterval(triggerPing, AUTO_PING_INTERVAL_MS);
     return () => clearInterval(id);
   }, []);
 
-  const particleData = useMemo(() => {
-    const radii = new Float32Array(PARTICLE_COUNT);
-    const angles = new Float32Array(PARTICLE_COUNT);
-    const speeds = new Float32Array(PARTICLE_COUNT);
-    const heights = new Float32Array(PARTICLE_COUNT);
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      radii[i] = 1.5 + Math.random() * 1.2;
-      angles[i] = Math.random() * Math.PI * 2;
-      speeds[i] = 0.05 + Math.random() * 0.09;
-      heights[i] = (Math.random() - 0.5) * 1.8;
-    }
-    return { radii, angles, speeds, heights };
-  }, []);
+  const particles = useOrbitingParticles(PARTICLE_COUNT, {
+    radius: [1.5, 2.7],
+    speed: [0.05, 0.14],
+    height: 1.8,
+    bobAmount: 0.06,
+    bobSpeed: 0.5,
+  });
 
-  const positions = useMemo(() => new Float32Array(PARTICLE_COUNT * 3), []);
+  // Reset the cursor if the canvas unmounts while hovered.
+  useEffect(
+    () => () => {
+      document.body.style.cursor = "auto";
+    },
+    [],
+  );
 
   useFrame((state, delta) => {
+    // Ease the whole group towards the pointer for a subtle parallax tilt.
     if (groupRef.current) {
       const targetY = -state.pointer.x * 0.6;
       const targetX = state.pointer.y * 0.3;
@@ -57,17 +65,7 @@ const SignalNode = () => {
       coreRef.current.rotation.y += delta * 0.35;
     }
     if (particlesRef.current) {
-      const t = state.clock.elapsedTime;
-      const posAttr = particlesRef.current.geometry.attributes.position;
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const a = particleData.angles[i] + t * particleData.speeds[i];
-        const r = particleData.radii[i];
-        posAttr.array[i * 3] = Math.cos(a) * r;
-        posAttr.array[i * 3 + 1] =
-          particleData.heights[i] + Math.sin(t * 0.5 + i) * 0.06;
-        posAttr.array[i * 3 + 2] = Math.sin(a) * r * 0.6;
-      }
-      posAttr.needsUpdate = true;
+      particles.update(particlesRef.current, state.clock.elapsedTime);
     }
 
     const now = performance.now() / 1000;
@@ -95,7 +93,13 @@ const SignalNode = () => {
     >
       <ambientLight intensity={1.2} color="#30343c" />
       <pointLight position={[3, 2, 3]} intensity={20} distance={20} decay={2} color="#4fd8c4" />
-      <pointLight position={[-3, -1.5, -2]} intensity={10} distance={20} decay={2} color="#ff7a3d" />
+      <pointLight
+        position={[-3, -1.5, -2]}
+        intensity={10}
+        distance={20}
+        decay={2}
+        color="#ff7a3d"
+      />
 
       {Array.from({ length: MAX_PINGS }).map((_, i) => (
         <mesh
@@ -126,7 +130,7 @@ const SignalNode = () => {
         />
       </mesh>
 
-      <Points ref={particlesRef} positions={positions} stride={3} frustumCulled={false}>
+      <Points ref={particlesRef} positions={particles.positions} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
           color="#8effc0"

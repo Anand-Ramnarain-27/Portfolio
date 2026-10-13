@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -6,6 +6,7 @@ import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
+/** Display groups for the Tech section. Names must match `technologies` entries. */
 const categories = [
   {
     label: "Languages",
@@ -31,7 +32,7 @@ const Tech = () => {
     filter === "All" ? categories : categories.filter((c) => c.label === filter);
 
   return (
-    <>
+    <SectionWrapper id="tech">
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>Stack</p>
         <h2 className={styles.sectionHeadText}>Technologies.</h2>
@@ -45,10 +46,10 @@ const Tech = () => {
               ? { backgroundColor: "#e7eaee", borderColor: "#e7eaee", color: "#0a0b0d" }
               : undefined
           }
-          className={`hud-label px-3.5 py-2 border transition-colors duration-300 ${
+          className={`hud-label border px-3.5 py-2 transition-colors duration-300 ${
             filter === "All"
               ? ""
-              : "bg-bg/70 border-line text-dim hover:text-ink hover:border-faint"
+              : "border-line bg-bg/70 text-dim hover:border-faint hover:text-ink"
           }`}
         >
           All
@@ -68,10 +69,8 @@ const Tech = () => {
                     }
                   : undefined
               }
-              className={`hud-label px-3.5 py-2 border transition-colors duration-300 ${
-                active
-                  ? ""
-                  : "bg-bg/70 border-line text-dim hover:text-ink hover:border-faint"
+              className={`hud-label border px-3.5 py-2 transition-colors duration-300 ${
+                active ? "" : "border-line bg-bg/70 text-dim hover:border-faint hover:text-ink"
               }`}
             >
               {category.label}
@@ -82,9 +81,7 @@ const Tech = () => {
 
       <div className="mt-10 flex flex-col gap-10">
         {visibleCategories.map((category, catIndex) => {
-          const items = technologies.filter((t) =>
-            category.names.includes(t.name)
-          );
+          const items = technologies.filter((t) => category.names.includes(t.name));
           if (items.length === 0) return null;
 
           return (
@@ -94,25 +91,22 @@ const Tech = () => {
               initial="hidden"
               animate="show"
             >
-              <p
-                className="hud-label mb-4"
-                style={{ color: category.accent }}
-              >
+              <p className="hud-label mb-4" style={{ color: category.accent }}>
                 {category.label}
               </p>
-              <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3">
+              <div className="grid grid-cols-3 gap-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-6">
                 {items.map((technology) => (
                   <div
                     key={technology.name}
                     style={{ "--hover-accent": category.accent }}
-                    className="flex flex-col items-center gap-3 border border-line bg-surface/40 py-6 px-2 hover:border-[var(--hover-accent)] transition-colors group"
+                    className="group flex flex-col items-center gap-3 border border-line bg-surface/40 px-2 py-6 transition-colors hover:border-[var(--hover-accent)]"
                   >
                     <img
                       src={technology.icon}
                       alt={technology.name}
-                      className="w-9 h-9 object-contain transition-transform duration-300 group-hover:scale-110"
+                      className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110"
                     />
-                    <span className="hud-label text-faint text-center leading-tight">
+                    <span className="hud-label text-center leading-tight text-faint">
                       {technology.name}
                     </span>
                   </div>
@@ -122,8 +116,8 @@ const Tech = () => {
           );
         })}
       </div>
-    </>
+    </SectionWrapper>
   );
 };
 
-export default SectionWrapper(Tech, "");
+export default Tech;

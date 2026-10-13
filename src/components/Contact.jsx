@@ -1,40 +1,47 @@
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
-import { styles } from "../styles";
-import { ContactVisual } from "./canvas";
 import { SectionWrapper } from "../hoc";
+import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
+import { ContactVisual } from "./canvas";
+import HudCorners from "./HudCorners";
+
+/*
+ * EmailJS identifiers. These are designed to be public: EmailJS restricts
+ * sending by allowed origin in its dashboard, not by keeping the key secret.
+ */
+const EMAILJS_SERVICE_ID = "service_p3cbrfd";
+const EMAILJS_TEMPLATE_ID = "template_p7kya7t";
+const EMAILJS_PUBLIC_KEY = "WsGSsTMtDsl1WEk4R";
+
+const EMPTY_FORM = { name: "", email: "", message: "" };
+
+const STATUS_MESSAGES = {
+  sent: "Thanks — I'll get back to you as soon as I can.",
+  error: "Something went wrong sending that. Please try again, or email me directly.",
+};
 
 const Contact = () => {
-  const formRef = useRef();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [form, setForm] = useState(EMPTY_FORM);
+  /** idle | sending | sent | error */
+  const [status, setStatus] = useState("idle");
+  const sending = status === "sending";
 
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm((current) => ({ ...current, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus("sending");
 
-    emailjs
-      .send(
-        'service_p3cbrfd',
-        'template_p7kya7t',
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
           to_name: "Anand Ramnarain",
@@ -42,123 +49,111 @@ const Contact = () => {
           to_email: "anandram0207@gmail.com",
           message: form.message,
         },
-        'WsGSsTMtDsl1WEk4R'
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
-        }
+        EMAILJS_PUBLIC_KEY,
       );
+      setForm(EMPTY_FORM);
+      setStatus("sent");
+    } catch (error) {
+      console.error("Contact form failed to send:", error);
+      setStatus("error");
+    }
   };
 
   const inputClasses =
     "bg-bg border border-line focus:border-accent py-3 px-4 placeholder:text-faint text-ink outline-none transition-colors";
 
   return (
-    <div
-      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
-    >
-      <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
-        className='relative flex-[0.75] border border-line bg-surface/30 p-8'
-      >
-        <span className='absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2 border-accent' />
-        <span className='absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2 border-accent' />
-        <span className='absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2 border-accent' />
-        <span className='absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2 border-accent' />
-
-        <div className='hud-label flex justify-between text-faint mb-6'>
-          <span>CHANNEL · EMAIL</span>
-          <span className='flex items-center gap-1.5 text-accent-2'>
-            <span
-              className={`w-1.5 h-1.5 rounded-full bg-accent-2 ${
-                loading ? "animate-pulse" : ""
-              }`}
-            />
-            {loading ? "SENDING" : "READY"}
-          </span>
-        </div>
-
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
-
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className='mt-12 flex flex-col gap-6'
+    <SectionWrapper id="contact">
+      <div className={`flex flex-col-reverse gap-10 overflow-hidden xl:mt-12 xl:flex-row`}>
+        <motion.div
+          variants={slideIn("left", "tween", 0.2, 1)}
+          className="relative flex-[0.75] border border-line bg-surface/30 p-8"
         >
-          <label className='flex flex-col'>
-            <span className='hud-label text-dim mb-3'>Your Name</span>
-            <input
-              type='text'
-              name='name'
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What's your name?"
-              className={inputClasses}
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='hud-label text-dim mb-3'>Your Email</span>
-            <input
-              type='email'
-              name='email'
-              value={form.email}
-              onChange={handleChange}
-              placeholder="What's your email address?"
-              className={inputClasses}
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='hud-label text-dim mb-3'>Your Message</span>
-            <textarea
-              rows={7}
-              name='message'
-              value={form.message}
-              onChange={handleChange}
-              placeholder='What do you want to say?'
-              className={inputClasses}
-            />
-          </label>
+          <HudCorners />
 
-          <button
-            type='submit'
-            disabled={loading}
-            className='hud-label bg-accent text-bg py-3 px-8 w-fit hover:opacity-90 transition-opacity disabled:opacity-50'
-          >
-            {loading ? "Sending..." : "Send"}
-          </button>
-        </form>
-      </motion.div>
-
-      <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
-        className='relative xl:flex-1 xl:h-auto md:h-[550px] h-[350px] border border-line'
-      >
-        <div className='absolute inset-0 z-10 pointer-events-none p-4 hud-label flex flex-col justify-between text-faint'>
-          <div className='flex justify-between'>
-            <span>SIGNAL · TRANSMITTER</span>
-            <span className='text-accent-2'>● LIVE</span>
+          <div className="hud-label mb-6 flex justify-between text-faint">
+            <span>CHANNEL · EMAIL</span>
+            <span className="flex items-center gap-1.5 text-accent-2">
+              <span
+                className={`h-1.5 w-1.5 rounded-full bg-accent-2 ${sending ? "animate-pulse" : ""}`}
+              />
+              {sending ? "SENDING" : "READY"}
+            </span>
           </div>
-          <span className='self-end'>click to ping</span>
-        </div>
-        <ContactVisual />
-      </motion.div>
-    </div>
+
+          <p className={styles.sectionSubText}>Get in touch</p>
+          <h3 className={styles.sectionHeadText}>Contact.</h3>
+
+          <form onSubmit={handleSubmit} className="mt-12 flex flex-col gap-6">
+            <label className="flex flex-col">
+              <span className="hud-label mb-3 text-dim">Your Name</span>
+              <input
+                type="text"
+                name="name"
+                required
+                autoComplete="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="What's your name?"
+                className={inputClasses}
+              />
+            </label>
+            <label className="flex flex-col">
+              <span className="hud-label mb-3 text-dim">Your Email</span>
+              <input
+                type="email"
+                name="email"
+                required
+                autoComplete="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="What's your email address?"
+                className={inputClasses}
+              />
+            </label>
+            <label className="flex flex-col">
+              <span className="hud-label mb-3 text-dim">Your Message</span>
+              <textarea
+                rows={7}
+                name="message"
+                required
+                value={form.message}
+                onChange={handleChange}
+                placeholder="What do you want to say?"
+                className={inputClasses}
+              />
+            </label>
+
+            <button
+              type="submit"
+              disabled={sending}
+              className="hud-label w-fit bg-accent px-8 py-3 text-bg transition-opacity hover:opacity-90 disabled:opacity-50"
+            >
+              {sending ? "Sending..." : "Send"}
+            </button>
+
+            <p role="status" aria-live="polite" className="min-h-[1.5em] text-[14px] text-dim">
+              {STATUS_MESSAGES[status]}
+            </p>
+          </form>
+        </motion.div>
+
+        <motion.div
+          variants={slideIn("right", "tween", 0.2, 1)}
+          className="relative h-[350px] border border-line md:h-[550px] xl:h-auto xl:flex-1"
+        >
+          <div className="hud-label pointer-events-none absolute inset-0 z-10 flex flex-col justify-between p-4 text-faint">
+            <div className="flex justify-between">
+              <span>SIGNAL · TRANSMITTER</span>
+              <span className="text-accent-2">● LIVE</span>
+            </div>
+            <span className="self-end">click to ping</span>
+          </div>
+          <ContactVisual />
+        </motion.div>
+      </div>
+    </SectionWrapper>
   );
 };
 
-export default SectionWrapper(Contact, "contact");
+export default Contact;

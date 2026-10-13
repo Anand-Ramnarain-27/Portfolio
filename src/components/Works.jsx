@@ -1,11 +1,28 @@
-import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
-import { styles } from "../styles";
 import { github } from "../assets";
-import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
+import { SectionWrapper } from "../hoc";
+import { styles } from "../styles";
+import { formatIndex } from "../utils/format";
 import { fadeIn, textVariant } from "../utils/motion";
+import TitleCard from "./TitleCard";
+
+const OverlayLink = ({ href, children }) => {
+  if (!href) return null;
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="hud-label flex items-center gap-2 text-ink transition-colors hover:text-accent"
+    >
+      {children}
+    </a>
+  );
+};
 
 const ProjectCard = ({
   index,
@@ -13,106 +30,118 @@ const ProjectCard = ({
   description,
   tags,
   image,
-  source_code_link,
-  live_demo_link,
-  featured,
-}) => {
-  return (
-    <motion.div
-      variants={fadeIn("up", "spring", index * 0.1, 0.75)}
-      className={`relative border border-line bg-surface/30 hover:border-accent/50 transition-colors group ${
-        featured ? "lg:col-span-2" : ""
+  sourceUrl,
+  demoUrl,
+  websiteUrl,
+  itchUrl,
+  caseStudy,
+  featured = false,
+}) => (
+  <motion.div
+    variants={fadeIn("up", "spring", index * 0.1, 0.75)}
+    className="group relative flex flex-col border border-line bg-surface/30 transition-colors hover:border-accent/50"
+  >
+    <span className="hud-label absolute left-3 top-3 z-10 bg-bg/70 px-1.5 py-0.5 text-ink/80">
+      {formatIndex(index)}
+    </span>
+
+    <div
+      className={`relative w-full overflow-hidden border-b border-line ${
+        featured ? "h-[260px]" : "h-[200px]"
       }`}
     >
-      <span className="absolute top-3 left-3 z-10 hud-label text-ink/80 bg-bg/70 px-1.5 py-0.5">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-
-      <div
-        className={`relative w-full border-b border-line overflow-hidden ${
-          featured ? "h-[260px]" : "h-[200px]"
-        }`}
-      >
+      {image ? (
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end gap-4 p-4">
-          <button
-            onClick={() => window.open(source_code_link, "_blank")}
-            className="hud-label flex items-center gap-2 text-ink hover:text-accent transition-colors"
-          >
-            <img src={github} alt="" className="w-4 h-4 object-contain" />
-            View Source
-          </button>
-          {live_demo_link && (
-            <button
-              onClick={() => window.open(live_demo_link, "_blank")}
-              className="hud-label flex items-center gap-2 text-ink hover:text-accent transition-colors"
-            >
-              Live Demo ↗
-            </button>
-          )}
-        </div>
-      </div>
+      ) : (
+        <TitleCard name={name} />
+      )}
 
-      <div className="p-5">
-        <h3
-          className={`font-display font-bold text-ink leading-tight ${
-            featured ? "text-[24px]" : "text-[19px]"
-          }`}
+      {/* Revealed on hover, and on keyboard focus so the links stay reachable. */}
+      <div className="absolute inset-0 flex flex-wrap items-end gap-4 bg-gradient-to-t from-bg via-bg/10 to-transparent p-4 opacity-0 transition-opacity duration-300 focus-within:opacity-100 group-hover:opacity-100">
+        <OverlayLink href={sourceUrl}>
+          <img src={github} alt="" className="h-4 w-4 object-contain" />
+          Source
+        </OverlayLink>
+        <OverlayLink href={demoUrl}>Live Demo ↗</OverlayLink>
+        <OverlayLink href={websiteUrl}>Website ↗</OverlayLink>
+        <OverlayLink href={itchUrl}>itch.io ↗</OverlayLink>
+      </div>
+    </div>
+
+    <div className="flex flex-1 flex-col p-5">
+      <h3
+        className={`font-display font-bold leading-tight text-ink ${
+          featured ? "text-[24px]" : "text-[19px]"
+        }`}
+      >
+        {name}
+      </h3>
+      <p className="mt-2 text-[13.5px] leading-[22px] text-dim">{description}</p>
+
+      <ul className="mt-4 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <li key={tag} className="tag-pill border-accent-2/40 text-accent-2">
+            {tag}
+          </li>
+        ))}
+      </ul>
+
+      {caseStudy && (
+        <Link
+          to={`/projects/${caseStudy}`}
+          className="hud-label mt-auto w-fit pt-5 text-accent transition-colors hover:text-ink"
         >
-          {name}
-        </h3>
-        <p className="mt-2 text-dim text-[13.5px] leading-[22px]">
-          {description}
-        </p>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span key={`${name}-${tag.name}`} className="tag-pill border-accent-2/40 text-accent-2">
-              {tag.name}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+          Read case study →
+        </Link>
+      )}
+    </div>
+  </motion.div>
+);
 
 const Works = () => {
+  const featured = projects.filter((project) => project.caseStudy);
+  const others = projects.filter((project) => !project.caseStudy);
+
   return (
-    <>
+    <SectionWrapper id="projects">
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>My work</p>
         <h2 className={styles.sectionHeadText}>Projects.</h2>
       </motion.div>
 
-      <div className="w-full flex">
-        <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className="mt-4 text-dim text-[16px] max-w-3xl leading-[28px]"
-        >
-          The following projects highlight my skills and experience across game
-          development, engine programming, and software engineering. Each entry
-          includes a brief description and a link to the source code, reflecting
-          my technical range and how I approach building real systems.
-        </motion.p>
-      </div>
+      <motion.p
+        variants={fadeIn("", "", 0.1, 1)}
+        className="mt-4 max-w-3xl text-[16px] leading-[28px] text-dim"
+      >
+        A selection of my work across engine programming, game development and software engineering.
+        Featured projects have a full case study covering what the project is and why it exists,
+        plus a technical deep dive into how it works.
+      </motion.p>
 
-      <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={`project-${index}`}
-            index={index}
-            featured={index === 0}
-            {...project}
-          />
+      <p className="hud-label mt-14 text-accent">Featured · case studies</p>
+      <div className="mt-5 grid gap-5 md:grid-cols-2">
+        {featured.map((project, index) => (
+          <ProjectCard key={project.name} index={index} featured {...project} />
         ))}
       </div>
-    </>
+
+      {others.length > 0 && (
+        <>
+          <p className="hud-label mt-16 text-accent-2">More projects</p>
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {others.map((project, index) => (
+              <ProjectCard key={project.name} index={featured.length + index} {...project} />
+            ))}
+          </div>
+        </>
+      )}
+    </SectionWrapper>
   );
 };
 
-export default SectionWrapper(Works, "projects");
+export default Works;
