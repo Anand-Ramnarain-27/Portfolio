@@ -32,6 +32,7 @@ import {
   web,
   wits,
 } from "../assets";
+import arcWindows from "../assets/arclight/editor-windows.webp";
 import bbdTitle from "../assets/bbd/bbd-title.webp";
 import phxEnvHero from "../assets/phoenix/environment-hero.webp";
 import geoDemoPoster from "../assets/sdk/geo-demo-poster.webp";
@@ -158,10 +159,20 @@ export const projects = [
     name: "Phoenix Engine — Custom C++ / DirectX 12 Engine",
     caseStudy: "phoenix-engine",
     description:
-      "My own DirectX 12 engine, built from scratch in C++: deferred PBR with tiled light culling and cascaded shadows, GPU-simulated particles and trails, volumetric fog and a full post-process stack, GPU skinning, physics, AI navigation and a custom ImGui editor. 50 HLSL shaders, 4 public releases.",
+      "My own C++20 / DirectX 12 engine: deferred PBR with tiled light culling and cascaded shadows, GPU skinning and particles, volumetric fog and a post-process stack, physics, AI navigation, hot-reloaded gameplay scripting, and an editor that builds standalone games. 53 HLSL shaders, 5 public releases.",
     tags: ["C++", "DirectX12", "Graphics"],
     image: phxEnvHero,
     sourceUrl: "https://github.com/Anand-Ramnarain-27/Anand-PhoenixEngine",
+  },
+
+  {
+    name: "Arclight — Cross-Platform C++20 Engine (D3D12 + Metal)",
+    caseStudy: "arclight",
+    description:
+      "A second engine, built for Windows and Mac from day one: one rendering interface with Direct3D 12 and Metal backends, HLSL compiled to both at build time, fence-based GPU resource lifetimes, glTF import, a dockable editor, and CI building and testing both platforms.",
+    tags: ["C++20", "D3D12 + Metal", "Cross-platform"],
+    image: arcWindows,
+    sourceUrl: "https://github.com/Anand-Ramnarain-27/arclight-engine",
   },
 
   {

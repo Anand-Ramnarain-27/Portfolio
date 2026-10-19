@@ -1,3 +1,4 @@
+import arclight from "./case-studies/arclight";
 import boundByDeath from "./case-studies/boundByDeath";
 import crossEngineSpatialSdk from "./case-studies/crossEngineSpatialSdk";
 import geoStreamSdk from "./case-studies/geoStreamSdk";
@@ -29,7 +30,7 @@ import splatWalker from "./case-studies/splatWalker";
  */
 
 /**
- * Case studies in display order. This order drives both the "Case study 01 / 05"
+ * Case studies in display order. This order drives both the "Case study 01 / 06"
  * counter and the previous / next links at the bottom of each page.
  *
  * Project cards link here through `caseStudy: "<slug>"` in constants/index.js.
@@ -38,6 +39,7 @@ import splatWalker from "./case-studies/splatWalker";
  */
 export const caseStudies = [
   phoenixEngine,
+  arclight,
   boundByDeath,
   splatWalker,
   crossEngineSpatialSdk,
