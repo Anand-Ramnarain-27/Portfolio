@@ -58,11 +58,11 @@ const phoenixEngine = {
 
   overview: {
     summary:
-      "Phoenix Engine is my own game engine, written in C++ against the raw DirectX 12 API. It started as coursework for my Master's at UPC: the last graded version was v0.2, a textured model viewer. Everything since has been my own choice, applying course topics this engine didn't require and researching beyond them. It now has a deferred renderer, animation, physics, scripting and an editor that builds standalone games, and Ashfall Keep, a game I'm developing, runs on it.",
+      "Phoenix Engine began as coursework for my Master's in Advanced Programming for AAA Games at UPC Barcelona. The final graded submission was v0.2 (January 2026): a textured model viewer with a camera and an ImGui editor. Since then I've kept developing it on my own, applying course topics that weren't required for this engine and researching further to go beyond them, so it's now a personal project. Ashfall Keep, a game I'm developing, is built on it.",
     sections: [
       {
-        heading: "Why I built it",
-        body: "Engines like Unity and Unreal hide a lot of what happens every frame. I wanted to own the whole loop myself: loading assets, managing GPU memory, lighting a scene and getting it on screen. Working at that level makes me a better programmer in any engine, because I understand what the tools are doing for me.",
+        heading: "Why I kept going",
+        body: "Engines like Unity and Unreal hide a lot of what happens every frame. Once the coursework was done, I wanted to keep building on the raw DirectX 12 API and own more of that loop myself: managing GPU memory, lighting a scene, animating and simulating it, and getting it on screen. Working at that level makes me a better programmer in any engine, because I understand what the tools are doing for me.",
       },
       {
         heading: "How it grew",
@@ -76,12 +76,19 @@ const phoenixEngine = {
       },
       {
         heading: "My role",
-        body: "I designed and wrote everything outside the third-party libraries. Every release is published as a prebuilt Windows build anyone can download and run.",
+        body: "Solo developer. v0.1 and v0.2 were course assignments. Everything after v0.2 is work I chose to add: the GameObject/component scene with serialization and prefabs, PBR with image-based lighting, the deferred renderer with tiled light culling and shadow maps, GPU skinning, morph targets and animation state machines, collision and physics, the scripting API, GPU particles and VFX, post-processing, AI navigation, the in-game UI and the standalone Player build. Every release is published as a prebuilt Windows build anyone can download and run.",
       },
       {
         heading: "What I learned",
         body: "Measure before optimising, and always profile in Release, since Debug builds can be misleading by a wide margin. On the GPU, keeping resources alive for the right amount of time matters as much as the rendering itself. And making everything tweakable live in the editor speeds up every later feature.",
       },
+    ],
+    shows: [
+      "Owning and growing a large C++ codebase across five releases",
+      "Rendering architecture on DirectX 12: deferred lighting, shadows and compute",
+      "Root-cause debugging of GPU crashes and asset-import bugs",
+      "Performance fixes based on what the engine measured, not guesses",
+      "Tools for other people: an editor, hot-reloaded scripting and standalone builds",
     ],
   },
 

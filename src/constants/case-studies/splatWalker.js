@@ -50,6 +50,12 @@ const splatWalkerStudy = {
         body: "The Unity version isn't a code port. Unity's splat rendering (C#/HLSL with GPU sorting in compute) shares nothing with the browser stack, so I rebuilt the same design on different foundations. That's closer to the SDK work real-time engine teams actually ship.",
       },
     ],
+    shows: [
+      "Shipping a web app with a public live demo",
+      "Turning raw capture data into a usable camera path (PCA, percentiles)",
+      "Porting between platforms: Three.js to Unity",
+      "Separating three bugs that looked like one",
+    ],
   },
 
   technical: {

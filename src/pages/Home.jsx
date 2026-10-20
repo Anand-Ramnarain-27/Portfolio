@@ -1,16 +1,10 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import {
-  About,
-  Contact,
-  Experience,
-  Hero,
-  Tech,
-  Works,
-  StarsCanvas,
-  University,
-} from "../components";
+import { About, Contact, Experience, Hero, Tech, Works, University } from "../components";
+
+// Decorative background behind Contact; loaded separately with three.js.
+const StarsCanvas = lazy(() => import("../components/canvas/Stars"));
 
 /** Delay before scrolling to a hash, giving the sections a moment to lay out. */
 const HASH_SCROLL_DELAY_MS = 50;
@@ -24,7 +18,7 @@ const Home = () => {
   const { hash, key } = useLocation();
 
   useEffect(() => {
-    document.title = "Anand Ramnarain | Portfolio";
+    document.title = "Anand Ramnarain | Software Engineer: C++, engines and real-time 3D";
     if (!hash) {
       window.scrollTo(0, 0);
       return;
@@ -43,13 +37,15 @@ const Home = () => {
     <>
       <Hero />
       <About />
+      <Works />
       <Experience />
       <Tech />
       <University />
-      <Works />
       <div className="relative z-0">
         <Contact />
-        <StarsCanvas />
+        <Suspense fallback={null}>
+          <StarsCanvas />
+        </Suspense>
       </div>
     </>
   );

@@ -4,6 +4,7 @@ import crossEngineSpatialSdk from "./case-studies/crossEngineSpatialSdk";
 import geoStreamSdk from "./case-studies/geoStreamSdk";
 import phoenixEngine from "./case-studies/phoenixEngine";
 import splatWalker from "./case-studies/splatWalker";
+import teamFormation from "./case-studies/teamFormation";
 
 /**
  * @typedef {Object} Media
@@ -22,15 +23,16 @@ import splatWalker from "./case-studies/splatWalker";
  * @property {{ value: string, label: string }[]} [stats]  Headline numbers.
  * @property {Object<string, string>} links  website | itch | demo | releases |
  *   source | sourceAlt (+ sourceAltLabel) | contributions. Empty values are hidden.
- * @property {{ summary: string, sections: { heading: string, body?: string, list?: string[] }[] }} overview
- *   The non-technical view.
+ * @property {{ summary: string, sections: { heading: string, body?: string, list?: string[] }[], shows?: string[] }} overview
+ *   The non-technical view. `shows` lists the general engineering skills the
+ *   project demonstrates, for readers who aren't specialists.
  * @property {Object} technical  The engineering view: `architecture`, `systems`,
  *   `table`, `challenges` and `next`. See TechnicalView for the accepted shape.
  * @property {Media[]} [gallery]
  */
 
 /**
- * Case studies in display order. This order drives both the "Case study 01 / 06"
+ * Case studies in display order. This order drives both the "Case study 01 / 07"
  * counter and the previous / next links at the bottom of each page.
  *
  * Project cards link here through `caseStudy: "<slug>"` in constants/index.js.
@@ -40,9 +42,10 @@ import splatWalker from "./case-studies/splatWalker";
 export const caseStudies = [
   phoenixEngine,
   arclight,
-  boundByDeath,
-  splatWalker,
   crossEngineSpatialSdk,
+  boundByDeath,
+  teamFormation,
+  splatWalker,
   geoStreamSdk,
 ];
 

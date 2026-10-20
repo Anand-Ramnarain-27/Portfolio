@@ -1,10 +1,11 @@
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
 import { heroModes } from "../../constants/heroModes";
 import { useOrbitingParticles } from "../../hooks/useOrbitingParticles";
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import CanvasLoader from "../Loader";
 
 const PARTICLE_COUNT = 220;
@@ -164,17 +165,8 @@ const EngineCore = ({ mode, autoRotate }) => {
 };
 
 const EngineCanvas = ({ mode }) => {
-  const [autoRotate, setAutoRotate] = useState(true);
-
-  // Respect the OS "reduce motion" setting, including if it changes while open.
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setAutoRotate(!mq.matches);
-    const handler = (e) => setAutoRotate(!e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
+  // With "reduce motion" on, the scene stops spinning but can still be orbited.
+  const autoRotate = !usePrefersReducedMotion();
 
   return (
     <Canvas

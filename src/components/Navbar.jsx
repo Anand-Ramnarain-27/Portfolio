@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import { navLinks } from "../constants";
+import { navLinks, profile } from "../constants";
 
 /**
  * Fixed top navigation with scroll-spy highlighting.
@@ -72,7 +72,7 @@ const Navbar = () => {
           <span className="hud-label hidden text-ink xs:block">Anand Ramnarain</span>
         </Link>
 
-        <ul className="hidden list-none flex-row gap-8 sm:flex">
+        <ul className="hidden list-none flex-row items-center gap-6 md:flex lg:gap-8">
           {navLinks.map((nav) => (
             <li key={nav.id}>
               <Link
@@ -86,11 +86,24 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
+          <li>
+            <a
+              href={profile.cv}
+              target="_blank"
+              rel="noreferrer"
+              className="hud-label border border-accent px-3 py-1.5 text-accent transition-colors hover:bg-accent hover:text-bg"
+            >
+              CV ↓
+            </a>
+          </li>
         </ul>
 
-        <div className="flex items-center sm:hidden">
+        <div className="flex items-center md:hidden">
           <button
-            aria-label="Toggle menu"
+            type="button"
+            aria-label={toggle ? "Close menu" : "Open menu"}
+            aria-expanded={toggle}
+            aria-controls="mobile-menu"
             onClick={() => setToggle(!toggle)}
             className="flex h-6 w-8 flex-col justify-between"
           >
@@ -110,6 +123,7 @@ const Navbar = () => {
           </button>
 
           <div
+            id="mobile-menu"
             className={`${
               toggle ? "flex" : "hidden"
             } absolute right-6 top-[64px] z-10 min-w-[160px] flex-col gap-4 border border-line bg-surface p-6`}
@@ -127,6 +141,15 @@ const Navbar = () => {
                 {nav.title}
               </Link>
             ))}
+            <a
+              href={profile.cv}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setToggle(false)}
+              className="hud-label text-accent"
+            >
+              CV (PDF) ↓
+            </a>
           </div>
         </div>
       </div>

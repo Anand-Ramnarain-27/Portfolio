@@ -1,123 +1,82 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
-import { technologies } from "../constants";
+import { practices, skillLevels, skills } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
-/** Display groups for the Tech section. Names must match `technologies` entries. */
-const categories = [
-  {
-    label: "Languages",
-    accent: "#ff7a3d",
-    names: ["C++", "C#", "JavaScript", "SQL", "Delphi"],
-  },
-  {
-    label: "Engines & Graphics",
-    accent: "#4fd8c4",
-    names: ["Unity", "Unreal Engine", "DirectX 12", "Three JS"],
-  },
-  {
-    label: "Web & Tools",
-    accent: "#8f7cff",
-    names: ["React JS", "Node JS", "Git", "Tailwind CSS", "HTML 5", "CSS 3"],
-  },
+/** Visual weight per proficiency level, strongest first. */
+const LEVELS = [
+  { id: "strong", label: "Strong", pill: "border-accent/60 text-ink bg-accent/10" },
+  { id: "working", label: "Working", pill: "border-accent-2/40 text-accent-2" },
+  { id: "familiar", label: "Familiar", pill: "border-line text-dim" },
 ];
 
-const Tech = () => {
-  const [filter, setFilter] = useState("All");
+const SkillArea = ({ index, area, ...levels }) => (
+  <motion.div
+    variants={fadeIn("up", "spring", index * 0.08, 0.6)}
+    className="border border-line bg-surface/30 p-5"
+  >
+    <h3 className="text-[16px] font-semibold text-ink">{area}</h3>
+    <dl className="mt-4 space-y-3">
+      {LEVELS.filter((level) => levels[level.id]?.length).map((level) => (
+        <div key={level.id} className="grid grid-cols-[72px_1fr] items-start gap-3">
+          <dt className="hud-label pt-1 !text-[10.5px] text-faint">{level.label}</dt>
+          <dd>
+            <ul className="flex flex-wrap gap-1.5">
+              {levels[level.id].map((skill) => (
+                <li key={skill} className={`tag-pill ${level.pill}`}>
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </motion.div>
+);
 
-  const visibleCategories =
-    filter === "All" ? categories : categories.filter((c) => c.label === filter);
+/**
+ * Skills grouped by area and level. Levels are shown as text, not bars or
+ * percentages, so they say something an interviewer can check.
+ */
+const Tech = () => (
+  <SectionWrapper id="skills">
+    <motion.div variants={textVariant()}>
+      <p className={styles.sectionSubText}>What I use, and how much</p>
+      <h2 className={styles.sectionHeadText}>Skills.</h2>
+    </motion.div>
 
-  return (
-    <SectionWrapper id="tech">
-      <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Stack</p>
-        <h2 className={styles.sectionHeadText}>Technologies.</h2>
-      </motion.div>
+    <dl className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-dim">
+      {LEVELS.map((level) => (
+        <div key={level.id} className="flex items-center gap-2">
+          <dt className={`tag-pill ${level.pill}`}>{level.label}</dt>
+          <dd>{skillLevels[level.id]}</dd>
+        </div>
+      ))}
+    </dl>
 
-      <div className="mt-8 flex flex-wrap gap-1.5">
-        <button
-          onClick={() => setFilter("All")}
-          style={
-            filter === "All"
-              ? { backgroundColor: "#e7eaee", borderColor: "#e7eaee", color: "#0a0b0d" }
-              : undefined
-          }
-          className={`hud-label border px-3.5 py-2 transition-colors duration-300 ${
-            filter === "All"
-              ? ""
-              : "border-line bg-bg/70 text-dim hover:border-faint hover:text-ink"
-          }`}
-        >
-          All
-        </button>
-        {categories.map((category) => {
-          const active = filter === category.label;
-          return (
-            <button
-              key={category.label}
-              onClick={() => setFilter(category.label)}
-              style={
-                active
-                  ? {
-                      backgroundColor: category.accent,
-                      borderColor: category.accent,
-                      color: "#0a0b0d",
-                    }
-                  : undefined
-              }
-              className={`hud-label border px-3.5 py-2 transition-colors duration-300 ${
-                active ? "" : "border-line bg-bg/70 text-dim hover:border-faint hover:text-ink"
-              }`}
-            >
-              {category.label}
-            </button>
-          );
-        })}
-      </div>
+    <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {skills.map((group, index) => (
+        <SkillArea key={group.area} index={index} {...group} />
+      ))}
+    </div>
 
-      <div className="mt-10 flex flex-col gap-10">
-        {visibleCategories.map((category, catIndex) => {
-          const items = technologies.filter((t) => category.names.includes(t.name));
-          if (items.length === 0) return null;
-
-          return (
-            <motion.div
-              key={category.label}
-              variants={fadeIn("up", "spring", catIndex * 0.1, 0.6)}
-              initial="hidden"
-              animate="show"
-            >
-              <p className="hud-label mb-4" style={{ color: category.accent }}>
-                {category.label}
-              </p>
-              <div className="grid grid-cols-3 gap-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-6">
-                {items.map((technology) => (
-                  <div
-                    key={technology.name}
-                    style={{ "--hover-accent": category.accent }}
-                    className="group flex flex-col items-center gap-3 border border-line bg-surface/40 px-2 py-6 transition-colors hover:border-[var(--hover-accent)]"
-                  >
-                    <img
-                      src={technology.icon}
-                      alt={technology.name}
-                      className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <span className="hud-label text-center leading-tight text-faint">
-                      {technology.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-    </SectionWrapper>
-  );
-};
+    <div className="mt-8 border border-line bg-surface/30 p-5">
+      <h3 className="hud-label text-accent">How I work</h3>
+      <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+        {practices.map((practice) => (
+          <li
+            key={practice}
+            className="relative pl-4 text-[14px] text-dim before:absolute before:left-0 before:text-faint before:content-['—']"
+          >
+            {practice}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </SectionWrapper>
+);
 
 export default Tech;

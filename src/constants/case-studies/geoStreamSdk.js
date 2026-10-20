@@ -50,6 +50,12 @@ const geoStreamSdkStudy = {
         body: "Version 1 reads uncompressed LAS (formats 0–3) only. I left out LAZ on purpose, because the only mature C# codec is LGPL and I wanted the core to stay a zero-dependency MIT install. Tiles are single-resolution, and it targets desktop and console.",
       },
     ],
+    shows: [
+      "Packaging a reusable, installable Unity SDK",
+      "Spatial partitioning and memory-budgeted streaming",
+      "Plain C# classes kept testable, with an NUnit suite",
+      "GPU-instanced rendering for millions of points",
+    ],
   },
 
   technical: {

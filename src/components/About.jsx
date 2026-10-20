@@ -1,35 +1,47 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
-import { services } from "../constants";
+import { aboutFacts, focusAreas } from "../constants";
+import { getCaseStudy } from "../constants/caseStudies";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
-const stats = [
-  { label: "Currently", value: "MSc Advanced Programming for AAA Games — UPC Barcelona" },
-  { label: "Focus", value: "Game systems, interactive media, and full-stack web development" },
-  { label: "Core Stack", value: "C++ · C# · TypeScript · React · Unity · Unreal" },
-];
-
-/** Alternate the two accent colours across the role cards. */
+/** Alternate the two accent colours across the focus cards. */
 const accentFor = (index) => (index % 2 === 0 ? "#ff7a3d" : "#4fd8c4");
 
-const ServiceCard = ({ index, title, icon }) => {
+/** One area of work, with links to the case studies that back it up. */
+const FocusCard = ({ index, title, icon, body, projects }) => {
   const accent = accentFor(index);
   return (
     <motion.div
-      variants={fadeIn("up", "spring", index * 0.15, 0.75)}
-      whileHover={{ y: -4 }}
+      variants={fadeIn("up", "spring", index * 0.12, 0.75)}
       style={{ "--hover-accent": accent }}
-      className="group relative flex min-h-[190px] flex-col items-center justify-center gap-4 border border-line bg-surface/40 p-6 text-center transition-colors hover:border-[var(--hover-accent)]"
+      className="flex flex-col border border-line bg-surface/40 p-5 transition-colors hover:border-[var(--hover-accent)]"
     >
-      <span className="hud-label absolute left-3 top-3 text-faint">0{index + 1}</span>
-      <img
-        src={icon}
-        alt={title}
-        className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
-      />
-      <h3 className="text-[15px] font-medium leading-snug text-ink">{title}</h3>
+      <div className="flex items-center gap-3">
+        <img src={icon} alt="" className="h-8 w-8 object-contain" />
+        <h3 className="text-[16px] font-semibold leading-snug text-ink">{title}</h3>
+      </div>
+      <p className="mt-3 text-[14px] leading-[22px] text-dim">{body}</p>
+      <p className="hud-label mt-auto pt-4 text-faint">Shown in</p>
+      <ul className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1">
+        {projects.map((slug) => {
+          const study = getCaseStudy(slug);
+          if (!study) return null;
+          return (
+            <li key={slug}>
+              <Link
+                to={`/projects/${slug}`}
+                className="text-[13px] underline decoration-line underline-offset-4 transition-colors hover:text-ink"
+                style={{ color: accent }}
+              >
+                {study.title}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </motion.div>
   );
 };
@@ -39,41 +51,52 @@ const About = () => {
     <SectionWrapper id="about">
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
+        <h2 className={styles.sectionHeadText}>About.</h2>
       </motion.div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-5">
-        <motion.p
-          variants={fadeIn("right", "", 0.1, 1)}
-          className="text-[16px] leading-[28px] text-dim lg:col-span-3"
-        >
-          I am a Digital Arts graduate from the University of the Witwatersrand, specialising in
-          Game Design, Interactive Media, and web-based technologies. I combine a strong foundation
-          in software development, game programming, and full-stack web development with a solid
-          grounding in user-centred design. I am currently pursuing a Master&apos;s in Advanced
-          Programming for AAA Games at UPC Barcelona, deepening my expertise in C++, game engine
-          architecture, AI systems, and graphics programming. My work spans game development,
-          interactive systems, and modern web applications, and I thrive in collaborative
-          environments that challenge me to bridge creativity and engineering to produce polished,
-          impactful experiences.
-        </motion.p>
-
         <motion.div
-          variants={fadeIn("left", "", 0.2, 1)}
-          className="divide-y divide-line border border-line bg-surface/30 lg:col-span-2"
+          variants={fadeIn("right", "", 0.1, 1)}
+          className="space-y-4 text-[16px] leading-[28px] text-dim lg:col-span-3"
         >
-          {stats.map((stat) => (
-            <div key={stat.label} className="p-4">
-              <p className="hud-label mb-1.5 text-faint">{stat.label}</p>
-              <p className="text-[14px] leading-snug text-ink">{stat.value}</p>
+          <p>
+            I&apos;m a software engineer at the start of my career, doing most of my work in C++. I
+            grew a DirectX 12 engine from Master&apos;s coursework into a deferred renderer with
+            physics, scripting and standalone builds. I&apos;m also writing a second engine that
+            runs on DirectX 12 and Metal, with unit tests and CI on both platforms, and I built a
+            C++20 streaming SDK that Unity, Unreal and my own engine all use through one API.
+          </p>
+          <p>
+            Before games I built web software: a React, TypeScript and PostgreSQL application at BBD
+            Software, and a website for a small business. The two sides help each other. Web work
+            taught me to build for the people using the software; engine work taught me to care
+            about memory, performance and tests.
+          </p>
+          <p>
+            The problems I enjoy most are the ones where something looks right but isn&apos;t: a
+            crash that only happens while the GPU is still using a resource, or a model that imports
+            upside-down. I also like building tools that let designers work without waiting for a
+            programmer.
+          </p>
+        </motion.div>
+
+        <motion.dl
+          variants={fadeIn("left", "", 0.2, 1)}
+          className="divide-y divide-line self-start border border-line bg-surface/30 lg:col-span-2"
+        >
+          {aboutFacts.map((fact) => (
+            <div key={fact.label} className="p-4">
+              <dt className="hud-label mb-1.5 text-faint">{fact.label}</dt>
+              <dd className="text-[14px] leading-snug text-ink">{fact.value}</dd>
             </div>
           ))}
-        </motion.div>
+        </motion.dl>
       </div>
 
-      <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-        {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
+      <h3 className="hud-label mt-12 text-accent">What I work on</h3>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {focusAreas.map((area, index) => (
+          <FocusCard key={area.title} index={index} {...area} />
         ))}
       </div>
     </SectionWrapper>

@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
+import { profile } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
-import { ContactVisual } from "./canvas";
 import HudCorners from "./HudCorners";
+
+// Decorative 3D scene, loaded in its own chunk with three.js.
+const ContactVisual = lazy(() => import("./canvas/ContactVisual"));
 
 /*
  * EmailJS identifiers. These are designed to be public: EmailJS restricts
@@ -82,9 +85,54 @@ const Contact = () => {
           </div>
 
           <p className={styles.sectionSubText}>Get in touch</p>
-          <h3 className={styles.sectionHeadText}>Contact.</h3>
+          <h2 className={styles.sectionHeadText}>Contact.</h2>
 
-          <form onSubmit={handleSubmit} className="mt-12 flex flex-col gap-6">
+          <p className="mt-6 max-w-[48ch] text-[15px] leading-[25px] text-dim">
+            I&apos;m looking for graduate, internship and junior roles. The quickest way to reach me
+            is email; the form below sends to the same inbox.
+          </p>
+          <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+            <li>
+              <a
+                href={`mailto:${profile.email}`}
+                className="text-[15px] text-ink underline decoration-accent underline-offset-4 hover:text-accent"
+              >
+                {profile.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="hud-label text-dim hover:text-accent"
+              >
+                LinkedIn ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                className="hud-label text-dim hover:text-accent"
+              >
+                GitHub ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href={profile.cv}
+                target="_blank"
+                rel="noreferrer"
+                className="hud-label text-dim hover:text-accent"
+              >
+                CV (PDF) ↓
+              </a>
+            </li>
+          </ul>
+
+          <form onSubmit={handleSubmit} className="mt-10 flex flex-col gap-6">
             <label className="flex flex-col">
               <span className="hud-label mb-3 text-dim">Your Name</span>
               <input
@@ -140,7 +188,8 @@ const Contact = () => {
 
         <motion.div
           variants={slideIn("right", "tween", 0.2, 1)}
-          className="relative h-[350px] border border-line md:h-[550px] xl:h-auto xl:flex-1"
+          className="relative hidden h-[550px] border border-line md:block xl:h-auto xl:flex-1"
+          aria-hidden="true"
         >
           <div className="hud-label pointer-events-none absolute inset-0 z-10 flex flex-col justify-between p-4 text-faint">
             <div className="flex justify-between">
@@ -149,7 +198,9 @@ const Contact = () => {
             </div>
             <span className="self-end">click to ping</span>
           </div>
-          <ContactVisual />
+          <Suspense fallback={null}>
+            <ContactVisual />
+          </Suspense>
         </motion.div>
       </div>
     </SectionWrapper>

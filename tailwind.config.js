@@ -1,3 +1,4 @@
+/* eslint-env node */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
@@ -16,7 +17,8 @@ module.exports = {
         "line-soft": "#1a1c20",
         ink: "#e7eaee",
         dim: "#9aa0aa",
-        faint: "#5c6169",
+        // Lightened from #5c6169 so small labels meet WCAG AA (about 4.9:1 on bg).
+        faint: "#7a808a",
         accent: "#ff7a3d",
         "accent-2": "#4fd8c4",
       },

@@ -49,6 +49,13 @@ const crossEngineSpatialSdk = {
         ],
       },
     ],
+    shows: [
+      "API design: one façade used from three different engines",
+      "Memory-budgeted, asynchronous streaming",
+      "187 automated tests and a measured stress test",
+      "Integration across C ABI, P/Invoke and C++ boundaries",
+      "Debugging lifetime and destruction-order bugs",
+    ],
   },
 
   technical: {

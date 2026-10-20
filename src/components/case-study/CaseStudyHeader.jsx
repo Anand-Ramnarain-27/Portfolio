@@ -56,7 +56,7 @@ const CaseStudyHeader = ({ study }) => {
           Game website ↗
         </ExternalButton>
         <ExternalButton href={links.itch} primary={!links.website}>
-          Play on itch.io ↗
+          itch.io page ↗
         </ExternalButton>
         <ExternalButton href={links.demo} primary>
           Live demo ↗

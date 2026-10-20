@@ -3,6 +3,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
 
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
+
 /** Slowly rotating star field behind the Contact section. */
 const STAR_COUNT = 1666;
 
@@ -33,9 +35,12 @@ const Stars = (props) => {
 };
 
 const StarsCanvas = () => {
+  // "demand" renders one still frame instead of animating every frame.
+  const reducedMotion = usePrefersReducedMotion();
+
   return (
-    <div className="absolute inset-0 z-[-1] h-auto w-full">
-      <Canvas camera={{ position: [0, 0, 1] }}>
+    <div className="absolute inset-0 z-[-1] h-auto w-full" aria-hidden="true">
+      <Canvas camera={{ position: [0, 0, 1] }} frameloop={reducedMotion ? "demand" : "always"}>
         <Suspense fallback={null}>
           <Stars />
         </Suspense>

@@ -1,7 +1,9 @@
 /**
  * Arclight: cross-platform C++20 engine with Direct3D 12 and Metal backends.
- * Screenshots and figures come from the engine repository's README,
- * CHANGELOG and docs/ROADMAP.md.
+ * Facts come from the engine repository's README, CHANGELOG and
+ * docs/ROADMAP.md, and from Anand's lecture-by-lecture roadmap tracker
+ * (80 items in phases 0–9 plus extras). Item counts reflect the repository
+ * as of v0.3 plus the Phase 3 scene work.
  */
 import arcWindows from "../../assets/arclight/editor-windows.webp";
 import arcMacos from "../../assets/arclight/editor-macos.webp";
@@ -26,7 +28,7 @@ const arclight = {
     { value: "2", label: "graphics APIs behind one RHI (plus a Null backend for tests)" },
     { value: "78", label: "unit test cases, run without a GPU" },
     { value: "3", label: "milestones shipped (v0.1 – v0.3)" },
-    { value: "2", label: "platforms built, tested and packaged by CI" },
+    { value: "27\u00a0/\u00a080", label: "roadmap items done, each tied to a lecture" },
   ],
   links: {
     source: "https://github.com/Anand-Ramnarain-27/arclight-engine",
@@ -34,7 +36,7 @@ const arclight = {
 
   overview: {
     summary:
-      "Arclight is my second engine, built from an empty repository so that it runs natively on both Windows and Mac. Phoenix Engine taught me Direct3D 12; Arclight is where I learn to design an engine properly: an abstraction over two very different graphics APIs, a build anyone can reproduce with one command, and tests that run on every push.",
+      "Arclight is my second engine, written from scratch so that it runs natively on both Windows and Mac. Phoenix Engine taught me Direct3D 12; Arclight is where I learn to design an engine properly: an abstraction over two very different graphics APIs, a build anyone can reproduce with one command, and tests that run on every push.",
     sections: [
       {
         heading: "Why a second engine",
@@ -43,10 +45,12 @@ const arclight = {
       {
         heading: "How I work on it",
         list: [
-          "Each milestone follows a topic from my Master's lectures and ships as a versioned release that works on both platforms before the next one starts.",
+          "The roadmap is 80 items across ten phases, each tied to the Master's lecture it comes from. Items where Arclight has to differ from the Windows-only course are tagged cross-platform; the stylized-rendering items go beyond the course.",
+          "An item only counts as done once it builds and runs on both machines, Windows and an Apple M1 Mac, and its notebook entry is written.",
+          "Each phase ships as a versioned release that works on both platforms before the next one starts.",
           "I keep an engineering notebook of what I built and why, so every decision has its reasoning written down.",
           "Every change is recorded in a Keep a Changelog CHANGELOG, and versions follow semantic versioning.",
-          "It started from the course's Windows-only starter code, kept as a reference and removed once the engine had replaced all of it.",
+          "The course's Windows-only starter code sat in the repository as a reference only, outside the build, and was removed once nothing needed it.",
         ],
       },
       {
@@ -55,13 +59,21 @@ const arclight = {
           "v0.1 Foundations: CMake build, SDL3 window and input, frame timing, a math library and a dockable ImGui editor shell.",
           "v0.2 Rendering hardware interface: Direct3D 12 and Metal backends, build-time shader compilation, pipelines and in-app GPU capture.",
           "v0.3 Meshes and viewport: mipmapped textures, safe resource lifetimes, a render-to-texture scene viewport, an editor camera and glTF 2.0 import.",
-          "Now: engine architecture. The scene, Hierarchy and Inspector are done; mouse picking and gizmos are next.",
+          "Now, Phase 3 engine architecture: the scene, Hierarchy and Inspector are done; mouse picking and gizmos, a virtual file system, the asset pipeline, serialization, culling and a skybox come next.",
         ],
       },
       {
         heading: "Where it's going",
-        body: "My lectures cover physically based rendering, so PBR, shadows and deferred shading come next. Alongside them I'm adding stylized rendering as a second material model in the same scene: toon/cel shading, ink lines and hatching, and a pixel-art mode.",
+        body: "After the engine architecture come lighting and PBR, compute and a job system, advanced rendering (deferred shading, tiled light culling, cascaded shadows, SSAO, reflections, post-processing, TAA), VFX, animation and gameplay systems. My lectures only cover physically based rendering, so alongside them I'm adding stylized rendering as a second material model in the same scene: toon/cel shading with inverted-hull outlines in the PBR phase, then screen-space ink lines, comic hatching and halftone, and a pixel-art mode with palettes, dithering and a pixel-snapped camera.",
       },
+    ],
+    shows: [
+      "Designing one abstraction over two very different graphics APIs",
+      "Cross-platform C++20 with CMake and pinned dependencies",
+      "78 automated tests and CI on Windows and macOS",
+      "Safe resource lifetimes with generational handles and deferred release",
+      "Treating input files as untrusted: bounds-checked glTF import",
+      "Planning and documenting the work: roadmap, changelog, versioned releases",
     ],
   },
 
@@ -131,20 +143,66 @@ const arclight = {
       },
     ],
     table: {
-      title: "Platform status",
-      note: "From the repository README. Every milestone has to work on both platforms before the next one starts.",
-      columns: ["Feature", "Windows (Direct3D 12)", "macOS (Metal)"],
+      title: "Roadmap",
+      note: "Ten phases from my Master's lectures, rebuilt cross-platform. An item is done once it works on both Windows (Direct3D 12) and macOS (Metal). Terrain, water and lightmapping are optional extras after Phase 9.",
+      columns: ["Phase", "Covers", "Cross-platform or beyond the course", "Done"],
+      highlightColumn: 3,
       rows: [
-        ["Build, tests and release packaging", "Working", "Working"],
-        ["RHI: device, swapchain, buffers, pipelines", "Working", "Working"],
-        ["Build-time shader compilation", "DXIL", "metallib"],
-        ["In-app GPU frame capture", "RenderDoc, PIX", "Xcode"],
-        ["Scene viewport, camera, reversed-Z, grid", "Working", "Working"],
-        ["glTF 2.0 import", "Working", "Working"],
-        ["Scene, Hierarchy and Inspector", "Working", "Working"],
-        ["Mouse picking and gizmos", "Next", "Next"],
-        ["PBR lighting and shadows", "Planned", "Planned"],
-        ["Stylized rendering (toon, ink, pixel art)", "Planned", "Planned"],
+        [
+          "0 · Foundations (v0.1)",
+          "CMake, SDL3 window and input, timing, math, editor shell",
+          "VS 2022 + Xcode presets, SDL3 instead of Win32",
+          "8\u00a0/\u00a08",
+        ],
+        [
+          "1 · RHI and first triangle (v0.2)",
+          "Device, swapchain, resources, pipelines, shaders",
+          "Metal backend, HLSL → SPIR-V → MSL, Xcode capture",
+          "10\u00a0/\u00a010",
+        ],
+        [
+          "2 · Meshes, textures, camera (v0.3)",
+          "Textures, glTF, editor camera, viewport, handles, ring buffer",
+          "Shared binding slots for both backends",
+          "7\u00a0/\u00a07",
+        ],
+        [
+          "3 · Engine architecture",
+          "Scene, panels, VFS, assets, serialization, culling, picking",
+          "",
+          "2\u00a0/\u00a09",
+        ],
+        [
+          "4 · Lighting and PBR",
+          "Lights, tone mapping, GGX, normal maps, IBL, BC textures",
+          "Toon/cel material and outlines",
+          "0\u00a0/\u00a010",
+        ],
+        [
+          "5 · Compute, threads, profiling",
+          "Compute shaders, job system",
+          "Tracy and GPU timestamps",
+          "0\u00a0/\u00a03",
+        ],
+        [
+          "6 · Advanced rendering",
+          "Deferred, light culling, shadows, SSAO, reflections, post, fog, decals",
+          "Ink lines, comic shading, pixel-art mode",
+          "0\u00a0/\u00a014",
+        ],
+        ["7 · VFX", "CPU and GPU particles, noise, trails", "", "0\u00a0/\u00a04"],
+        [
+          "8 · Animation",
+          "Keyframes, GPU skinning, morph targets, state machines",
+          "",
+          "0\u00a0/\u00a04",
+        ],
+        [
+          "9 · Gameplay systems",
+          "Collision, spatial partitioning, AI, FSMs, scripting, UI, audio",
+          "Jolt physics, miniaudio",
+          "0\u00a0/\u00a08",
+        ],
       ],
     },
     challenges: [],

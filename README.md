@@ -33,7 +33,16 @@ src/
 2. Add it to the list in `src/constants/caseStudies.js`. List order is page order.
 3. On the matching card in `src/constants/index.js`, set `caseStudy: "<slug>"`.
    Cards with a case study show under **Featured**; the rest under **More projects**.
-4. Leave any link you don't have as `""` and it's hidden automatically.
+   Give each card a `role` (what you did, and with whom), `categories` for the
+   project filter, and its `links`.
+4. Leave any case-study link you don't have as `""` and it's hidden automatically.
+5. Optionally add `overview.shows`: a few plain-language skills the project
+   demonstrates, shown at the top of the Overview tab.
+
+## Updating the CV
+
+Replace `public/Anand_Ramnarain_CV.pdf` with the new PDF, keeping the same file
+name. Every CV link on the site (hero, navbar, contact, footer) points at it.
 
 Video clips: convert GIFs to MP4 with a poster frame (they're ~10–20× smaller):
 

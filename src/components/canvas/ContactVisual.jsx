@@ -4,6 +4,7 @@ import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
 import { useOrbitingParticles } from "../../hooks/useOrbitingParticles";
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import CanvasLoader from "../Loader";
 
 const PARTICLE_COUNT = 70;
@@ -145,9 +146,12 @@ const SignalNode = () => {
 };
 
 const ContactVisual = () => {
+  // With "reduce motion" on, draw only when something changes (a click ping).
+  const reducedMotion = usePrefersReducedMotion();
+
   return (
     <Canvas
-      frameloop="always"
+      frameloop={reducedMotion ? "demand" : "always"}
       dpr={[1, 2]}
       camera={{ position: [0, 0.3, 4.2], fov: 42 }}
       gl={{ antialias: true, alpha: true }}

@@ -70,6 +70,13 @@ const boundByDeath = {
         body: "Systems other people use every day have to be easy to work with, not just correct. The haptics and prefab work taught me to design for the designer, so they can do what they need without asking a programmer.",
       },
     ],
+    shows: [
+      "Working on a 17-person team with Scrum and code review",
+      "Building tools that designers use without a programmer",
+      "Rendering features in a shared engine: light culling and post-processing",
+      "Checking GPU work with PIX",
+      "Starting from what teammates need before writing code",
+    ],
   },
 
   technical: {
@@ -99,7 +106,7 @@ const boundByDeath = {
       },
       {
         title: "Light culling",
-        body: "I implemented light culling in the team engine so scenes can use many lights at a reasonable cost.",
+        body: "I implemented light culling in the team engine so scenes can use many lights at a reasonable cost, and checked the GPU work in PIX captures.",
       },
       {
         title: "Controller haptics",
