@@ -1,0 +1,1 @@
+import{r}from"./react-wt90cwsy.js";const c="(prefers-reduced-motion: reduce)",a=()=>{const[d,t]=r.useState(()=>typeof window<"u"&&window.matchMedia(c).matches);return r.useEffect(()=>{const e=window.matchMedia(c),n=s=>t(s.matches);return t(e.matches),e.addEventListener("change",n),()=>e.removeEventListener("change",n)},[]),d};export{a as u};
