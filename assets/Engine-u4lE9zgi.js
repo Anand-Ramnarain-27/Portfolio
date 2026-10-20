@@ -1,4 +1,4 @@
-import{j as e,r as t}from"./react-wt90cwsy.js";import{C as v,a as p,u as M,P,b as y,O as w}from"./three-XLXX52vl.js";import{i as s}from"./index-HD3jVEzq.js";import{C as b,u as R}from"./Loader-sTQziM86.js";import{u as C}from"./usePrefersReducedMotion-cLo4EeyV.js";const S=220,A=`
+import{j as e,r as t}from"./react-wt90cwsy.js";import{C as v,a as p,u as M,P,b as y,O as w}from"./three-XLXX52vl.js";import{i as s}from"./index-dnK8uleC.js";import{C as b,u as R}from"./Loader-sTQziM86.js";import{u as C}from"./usePrefersReducedMotion-cLo4EeyV.js";const S=220,A=`
   varying float vViewDist;
   void main() {
     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
