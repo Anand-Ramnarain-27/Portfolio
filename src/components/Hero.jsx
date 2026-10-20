@@ -61,17 +61,17 @@ const Hero = () => {
             className="hud-label mb-3 transition-colors duration-500"
             style={{ color: theme.accent }}
           >
-            Software Engineer · C++ · Real-time 3D
+            Software Engineer · C++ · Systems · Real-time 3D
           </p>
           <h1 className={styles.heroHeadText}>
             Anand
-            <br />
-            Ramnarain
+            {/* One line on wide screens saves vertical space; two on phones. */}
+            <br className="md:hidden" /> Ramnarain
           </h1>
           <p className={`${styles.heroSubText} mt-5 max-w-[54ch] text-ink/90`}>
-            Early-career software engineer finishing a Master&apos;s in Advanced Programming for AAA
-            Games at UPC Barcelona. I build C++ engines, cross-engine SDKs and developer tools, and
-            I&apos;ve shipped full-stack web apps in TypeScript and React.
+            Early-career software engineer completing a Master&apos;s in Advanced Programming for
+            AAA Games at UPC Barcelona. I build C++ engines, cross-engine SDKs and developer tools,
+            alongside full-stack applications with TypeScript and React.
           </p>
           <p className="hud-label mt-4 text-dim">
             Barcelona · open to graduate, internship and junior roles

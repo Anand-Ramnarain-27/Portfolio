@@ -18,7 +18,7 @@ const Home = () => {
   const { hash, key } = useLocation();
 
   useEffect(() => {
-    document.title = "Anand Ramnarain | Software Engineer: C++, engines and real-time 3D";
+    document.title = "Anand Ramnarain | Software Engineer: C++, systems and real-time 3D";
     if (!hash) {
       window.scrollTo(0, 0);
       return;

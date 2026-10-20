@@ -60,11 +60,12 @@ const About = () => {
           className="space-y-4 text-[16px] leading-[28px] text-dim lg:col-span-3"
         >
           <p>
-            I&apos;m a software engineer at the start of my career, doing most of my work in C++. I
-            grew a DirectX 12 engine from Master&apos;s coursework into a deferred renderer with
-            physics, scripting and standalone builds. I&apos;m also writing a second engine that
-            runs on DirectX 12 and Metal, with unit tests and CI on both platforms, and I built a
-            C++20 streaming SDK that Unity, Unreal and my own engine all use through one API.
+            I&apos;m a software engineer at the start of my career, working mostly in C++ on systems
+            that other code depends on: engines, libraries and tools. I grew a DirectX 12 engine
+            from Master&apos;s coursework into a deferred renderer with physics, scripting and
+            standalone builds. I designed a second engine around one interface over DirectX 12 and
+            Metal, with 78 unit tests and CI on both platforms. I also built a C++20 streaming SDK
+            with 187 automated tests that Unity, Unreal and my own engine all use through one API.
           </p>
           <p>
             Before games I built web software: a React, TypeScript and PostgreSQL application at BBD
@@ -75,8 +76,9 @@ const About = () => {
           <p>
             The problems I enjoy most are the ones where something looks right but isn&apos;t: a
             crash that only happens while the GPU is still using a resource, or a model that imports
-            upside-down. I also like building tools that let designers work without waiting for a
-            programmer.
+            upside-down. I like finding the real cause, fixing it in the design rather than around
+            it, and leaving a test or a note so it stays fixed. I also like building tools that let
+            designers work without waiting for a programmer.
           </p>
         </motion.div>
 
