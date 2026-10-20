@@ -222,8 +222,8 @@ export const experiences = [
     date: "November 2024 - December 2024",
     points: [
       "Built a full-stack web application with a small team during a one-month placement: React and TypeScript on the front end, PostgreSQL with Prisma ORM behind it.",
-      "Set up Flyway database migrations and Docker containers for local and test environments, with deployment on Azure.",
-      "Worked inside BBD's engineering process, from design through to a deployed application.",
+      "Set up Flyway database migrations and Docker containers for local and test environments, using Azure for development and testing.",
+      "Worked inside BBD's engineering process, from design through to a working, tested application.",
     ],
   },
   {
@@ -326,7 +326,7 @@ export const projects = [
     name: "Team Formation Platform",
     subtitle: "Full-stack web application",
     caseStudy: "team-formation-platform",
-    role: "Full-stack developer",
+    role: "Solo · personal project",
     categories: ["web"],
     description:
       "A web app for running student group projects: students submit and vote on ideas, the top ideas become teams, and the remaining students are assigned to them. React and TypeScript front end, a serverless TypeScript API on Azure Functions, PostgreSQL through Prisma, GitHub sign-in, and an Nx monorepo with Docker.",

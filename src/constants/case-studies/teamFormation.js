@@ -13,8 +13,8 @@ const teamFormation = {
     "A full-stack web app for running student group projects: ideas are submitted and voted on, the winning ideas become teams, and everyone else is assigned to one. React and TypeScript in front of a serverless TypeScript API and PostgreSQL.",
   image: team,
   meta: {
-    role: "Full-stack developer",
-    team: "Public repository: 108 commits",
+    role: "Solo developer",
+    team: "Personal project, started during my BBD placement",
     timeline: "Dec 2024 – Mar 2025",
     stack: ["TypeScript", "React", "Azure Functions", "PostgreSQL", "Prisma", "Docker"],
   },
@@ -42,7 +42,7 @@ const teamFormation = {
       },
       {
         heading: "Why it's here",
-        body: "Most of my portfolio is C++ and real-time 3D. This project shows the other half of what I do: a typed, end-to-end web application with a relational data model, a documented API, migrations and containerised environments, the same stack I worked in at BBD Software.",
+        body: "Most of my portfolio is C++ and real-time 3D. This project shows the other half of what I do: a typed, end-to-end web application with a relational data model, a documented API, migrations and containerised environments, the same stack I used during my placement at BBD Software, where I started this as my own project.",
       },
       {
         heading: "What I'd do next",
